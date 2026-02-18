@@ -1,0 +1,147 @@
+/* Global Styles */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #F4F4F4;
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* Header */
+header {
+    background-color: #00573F; /* GPI deep green */
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.about-container {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.about-container img {
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.about-text {
+    flex: 1;
+}
+
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #C49A6C; /* warm gold accent */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    color: #6BA539; /* lighter green */
+}
+
+/* Main Layout */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Section Headings */
+section h2 {
+    color: #00573F;
+    border-bottom: 3px solid #6BA539;
+    padding-bottom: 0.3rem;
+    margin-bottom: 1rem;
+}
+
+/* About Section */
+#about img {
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+/* Skills List */
+#skills ul {
+    list-style: square;
+    padding-left: 1.5rem;
+}
+
+#skills li {
+    margin-bottom: 0.5rem;
+}
+
+/* Projects */
+article {
+    background: white;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+    border-left: 5px solid #6BA539;
+    border-radius: 4px;
+}
+
+article h3 {
+    margin-top: 0;
+    color: #00573F;
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+input, textarea {
+    padding: 0.5rem;
+    border: 1px solid #CCCCCC;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+button {
+    background-color: #00573F;
+    color: white;
+    padding: 0.7rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+button:hover {
+    background-color: #6BA539;
+}
+
+/* Footer */
+footer {
+    background-color: #333333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: #C49A6C;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #6BA539;
+}
