@@ -12,7 +12,8 @@ Profile page built for my Web Scripting I course. It uses semantic HTML, accessi
 - Links to GitHub, LinkedIn, and internal jump links
 - Custom CSS using company color pallete
 
-## GitHub Respository Link
+## GitHub Repository Link  
 https://github.com/jmoore19023/JM-Web-Scripting-I
 
-## Live GitHub Pages Link
+## Live GitHub Pages Link  
+https://jmoore19023.github.io/JM-Web-Scripting-I/
