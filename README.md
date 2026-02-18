@@ -1,60 +1,18 @@
 # John Moore – Web Scripting I Profile Page
 
-A clean, professional profile page built for my Web Scripting I course.  
-This project demonstrates correct semantic HTML structure, accessible content markup, and a functional contact form using built‑in HTML validation. The page reflects my background in manufacturing, continuous improvement, and data analytics.
-
----
+Profile page built for my Web Scripting I course. It uses semantic HTML, accessible content structure, and a basic contact form with HTML validation. The page reflects my background in manufacturing, continuous improvement, and data analytics.
 
 ## Features
+- Semantic HTML5 layout (header, nav, main, section, article, footer)
+- About section with two paragraphs about my background and goals
+- Skills list with five items related to programming and analytics
+- Projects section with two summaries
+- Image with alt text
+- Contact form with required fields, minlength rules, proper labels, and ID connections
+- Links to GitHub, LinkedIn, and internal jump links
+- Custom CSS using company color pallete
 
-- **Semantic HTML5 structure**  
-  Includes header, nav, main, section, article, and footer elements.
+## GitHub Respository Link
+https://github.com/jmoore19023/JM-Web-Scripting-I
 
-- **Professional About section**  
-  Two paragraphs describing my background, interests, and career goals.
-
-- **Skills list**  
-  Five key skills related to programming, analytics, and continuous improvement.
-
-- **Projects section**  
-  Two project articles highlighting real work experience:
-  - Enterprise‑Scale MES Implementation  
-  - Automated Production/Quality Reporting
-
-- **Responsive image**  
-  Includes a headshot with meaningful alt text.
-
-- **Functional contact form**  
-  - Name (required, minlength 2)  
-  - Email (required, valid format)  
-  - Message (required, minlength 10)  
-  - All labels properly connected using `for` and `id`.
-
-- **External and internal links**  
-  - GitHub repository  
-  - LinkedIn  
-  - Jump links to About, Skills, and Projects
-
-- **Custom CSS styling**  
-  Uses a color palette inspired by Graphic Packaging International’s brand identity.
-
----
-
-## 📸 Screenshot
-
-*(Replace this placeholder with your actual screenshot once you upload it to your repo.)*
-
-![Screenshot of my profile page](images/screenshot.png)
-
----
-
-## 🌐 Live Demo (GitHub Pages)
-
-**Live site:**  
-https://YOUR-USERNAME.github.io/YOUR-REPO-NAME/
-
-*(Update this link after enabling GitHub Pages.)*
-
----
-
-## 📁 Repository Structure
+## Live GitHub Pages Link
