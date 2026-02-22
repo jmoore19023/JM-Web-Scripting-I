@@ -1,4 +1,3 @@
-/* Global Styles */
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
@@ -8,9 +7,9 @@ body {
     line-height: 1.6;
 }
 
-/* Header */
+
 header {
-    background-color: #00573F; /* GPI deep green */
+    background-color: #00573F;
     color: white;
     padding: 2rem 1rem;
     text-align: center;
@@ -22,9 +21,12 @@ header h1 {
 
 .about-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: center;
     gap: 1.5rem;
+    margin: 0 auto;
 }
+
 
 .about-container img {
     border-radius: 6px;
@@ -46,23 +48,22 @@ nav ul {
 }
 
 nav a {
-    color: #C49A6C; /* warm gold accent */
+    color: #C49A6C;
     text-decoration: none;
     font-weight: bold;
 }
 
 nav a:hover {
-    color: #6BA539; /* lighter green */
+    color: #6BA539;
 }
 
-/* Main Layout */
+
 main {
     max-width: 900px;
     margin: 2rem auto;
     padding: 0 1rem;
 }
 
-/* Section Headings */
 section h2 {
     color: #00573F;
     border-bottom: 3px solid #6BA539;
@@ -70,13 +71,13 @@ section h2 {
     margin-bottom: 1rem;
 }
 
-/* About Section */
+
 #about img {
     border-radius: 6px;
     margin-bottom: 1rem;
 }
 
-/* Skills List */
+
 #skills ul {
     list-style: square;
     padding-left: 1.5rem;
@@ -86,7 +87,7 @@ section h2 {
     margin-bottom: 0.5rem;
 }
 
-/* Projects */
+
 article {
     background: white;
     padding: 1rem;
@@ -100,7 +101,7 @@ article h3 {
     color: #00573F;
 }
 
-/* Contact Form */
+
 form {
     display: flex;
     flex-direction: column;
@@ -128,7 +129,7 @@ button:hover {
     background-color: #6BA539;
 }
 
-/* Footer */
+
 footer {
     background-color: #333333;
     color: white;
