@@ -1,19 +1,28 @@
-# John Moore – Web Scripting I Profile Page
+# John Moore — Portfolio Site
 
-Profile page built for my Web Scripting I course. It uses semantic HTML, accessible content structure, and a basic contact form with HTML validation. The page reflects my background in manufacturing, continuous improvement, and data analytics.
+A personal portfolio website built for Web Scripting I. The site documents my journey from the plant floor to IT and data analytics, showcasing my professional background, real-world projects, and career goals.
 
-## Features
-- Semantic HTML5 layout (header, nav, main, section, article, footer)
-- About section with two paragraphs about my background and goals
-- Skills list with five items related to programming and analytics
-- Projects section with two summaries
-- Image with alt text
-- Contact form with required fields, minlength rules, proper labels, and ID connections
-- Links to GitHub, LinkedIn, and internal jump links
-- Custom CSS using company color pallete
+The site uses a dark theme with a green, tan, and steel blue accent system inspired by the GPI brand. All pages share a consistent header, navigation, and footer built with semantic HTML and a single shared CSS file.
 
-## GitHub Repository Link  
-https://github.com/jmoore19023/JM-Web-Scripting-I
+---
 
-## Live GitHub Pages Link  
-https://jmoore19023.github.io/JM-Web-Scripting-I/
+## Pages
+
+- **Home** (`index.html`) — Landing page with a full-width hero banner and site navigation cards
+- **About** (`about.html`) — Bio, career timeline, skills, goals, and hobbies
+- **Projects** (`projects.html`) — Ignition MES implementation case study with YouTube embed, and cross-system reporting overview
+- **Contact** (`contact.html`) — Contact form with validation and contact info sidebar
+
+---
+
+## Screenshot
+
+![Homepage screenshot](images/screenshot-home.png)
+
+---
+
+## Built With
+
+- HTML5
+- CSS3 (custom design system with `:root` variables, utility classes, and responsive layout)
+- No frameworks or libraries
