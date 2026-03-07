@@ -1,0 +1,635 @@
+/* =============================================
+   LANDING.CSS
+   Extends and modernizes the base site theme.
+   Import AFTER styles.css in landing.html.
+   Does not affect any other pages.
+============================================= */
+
+/* --- Google Fonts upgrade for landing page only --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+    /* Inherit all site tokens, add landing-specific ones */
+    --font-body:   'Inter', Arial, sans-serif;
+    --font-mono:   'JetBrains Mono', monospace;
+    --glow-green:  rgba(107, 165, 57, 0.18);
+    --glow-blue:   rgba(126, 184, 201, 0.18);
+    --glow-warm:   rgba(196, 154, 108, 0.18);
+    --surface-2:   #222222;
+    --surface-3:   #2a2a2a;
+    --border-dim:  #2e2e2e;
+}
+
+/* Override body font for landing page */
+body {
+    font-family: var(--font-body);
+    background-color: #161616;
+}
+
+/* =============================================
+   HERO — two-column on desktop
+============================================= */
+.landing-hero {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: linear-gradient(160deg, #111111 0%, #1a1a1a 60%, #0d1a12 100%);
+    border-bottom: 1px solid #2a2a2a;
+    padding: 5rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle grid texture */
+.landing-hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(107,165,57,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(107,165,57,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+.landing-hero-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.landing-hero-photo img {
+    width: 160px;
+    height: 160px;
+    min-width: 160px;
+    min-height: 160px;
+    max-width: 160px;
+    max-height: 160px;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 50%;
+    border: 3px solid #6BA539;
+    box-shadow: 0 0 0 6px var(--glow-green), 0 8px 32px rgba(0,0,0,0.5);
+    display: block;
+    margin: 0 auto;
+}
+
+.landing-hero-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.landing-hero-text h2 {
+    font-size: 2.6rem;
+    font-weight: 600;
+    color: #ffffff;
+    border-bottom: none;
+    margin: 0;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+}
+
+.hero-role {
+    color: #C49A6C;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 0.02em;
+}
+
+.hero-tagline {
+    color: #7EB8C9;
+    font-size: 1rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.hero-body {
+    color: #bbbbbb;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 520px;
+}
+
+.hero-btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.btn-outline {
+    display: inline-block;
+    background-color: transparent;
+    color: #6BA539;
+    padding: 0.55rem 1.4rem;
+    border: 1.5px solid #6BA539;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: var(--font-body);
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline:hover {
+    background-color: #6BA539;
+    color: #ffffff;
+}
+
+/* =============================================
+   SECTION SHARED STYLES
+============================================= */
+.landing-section {
+    padding: 3rem 0 1.5rem;
+}
+
+.landing-section h2 {
+    color: #6BA539;
+    border-bottom: 2px solid #00573F;
+    padding-bottom: 0.3rem;
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+
+.section-sub {
+    color: #777777;
+    font-size: 0.88rem;
+    margin: 0 0 1.5rem;
+}
+
+/* =============================================
+   TOOLS / FOCUS AREA
+============================================= */
+.tools-section {
+    background-color: var(--surface-2);
+    border-top: 1px solid var(--border-dim);
+    border-bottom: 1px solid var(--border-dim);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 2.5rem 2rem;
+}
+
+.tools-inner {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.tools-inner h2 {
+    color: #6BA539;
+    border-bottom: 2px solid #00573F;
+    padding-bottom: 0.3rem;
+    margin-top: 0;
+    margin-bottom: 0.4rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+}
+
+.tool-pill {
+    background: linear-gradient(135deg, #1e1e1e 0%, #1a1a1a 100%);
+    border: 1px solid var(--border-dim);
+    border-radius: 6px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.tool-pill:hover {
+    border-color: #6BA539;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 0 1px var(--glow-green);
+    transform: translateY(-2px);
+}
+
+.tool-pill:nth-child(2):hover { border-color: #7EB8C9; box-shadow: 0 0 0 1px var(--glow-blue); }
+.tool-pill:nth-child(3):hover { border-color: #C49A6C; box-shadow: 0 0 0 1px var(--glow-warm); }
+.tool-pill:nth-child(4):hover { border-color: #6BA539; box-shadow: 0 0 0 1px var(--glow-green); }
+.tool-pill:nth-child(5):hover { border-color: #7EB8C9; box-shadow: 0 0 0 1px var(--glow-blue); }
+.tool-pill:nth-child(6):hover { border-color: #C49A6C; box-shadow: 0 0 0 1px var(--glow-warm); }
+
+.tool-icon {
+    font-size: 1.4rem;
+    line-height: 1;
+    flex-shrink: 0;
+}
+
+.tool-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+}
+
+.tool-name {
+    color: #eeeeee;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.tool-desc {
+    color: #777777;
+    font-size: 0.78rem;
+    margin: 0;
+}
+
+/* =============================================
+   PROJECT CARDS GRID
+============================================= */
+.projects-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+.project-tile {
+    background: linear-gradient(160deg, #2e2e2e 0%, #252525 100%);
+    border-radius: 6px;
+    border-top: 3px solid #6BA539;
+    padding: 1.25rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle inner glow on top border */
+.project-tile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 60px;
+    background: linear-gradient(to bottom, rgba(107,165,57,0.06), transparent);
+    pointer-events: none;
+}
+
+.project-tile:nth-child(2)::before { background: linear-gradient(to bottom, rgba(126,184,201,0.06), transparent); }
+.project-tile:nth-child(3)::before { background: linear-gradient(to bottom, rgba(196,154,108,0.06), transparent); }
+.project-tile:nth-child(4)::before { background: linear-gradient(to bottom, rgba(107,165,57,0.06), transparent); }
+.project-tile:nth-child(5)::before { background: linear-gradient(to bottom, rgba(126,184,201,0.06), transparent); }
+.project-tile:nth-child(6)::before { background: linear-gradient(to bottom, rgba(196,154,108,0.06), transparent); }
+
+.project-tile:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06);
+    color: inherit;
+}
+
+.project-tile:nth-child(2) { border-top-color: #7EB8C9; }
+.project-tile:nth-child(3) { border-top-color: #C49A6C; }
+.project-tile:nth-child(4) { border-top-color: #6BA539; }
+.project-tile:nth-child(5) { border-top-color: #7EB8C9; }
+.project-tile:nth-child(6) { border-top-color: #C49A6C; }
+
+.tile-icon {
+    font-size: 1.6rem;
+    line-height: 1;
+    display: block;
+}
+
+.tile-title {
+    color: #eeeeee;
+    font-size: 0.95rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.tile-summary {
+    color: #888888;
+    font-size: 0.84rem;
+    margin: 0;
+    flex: 1;
+    line-height: 1.5;
+}
+
+.tile-tag-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+}
+
+.tag {
+    background-color: #1a1a1a;
+    border: 1px solid #333333;
+    color: #777777;
+    font-size: 0.72rem;
+    font-family: var(--font-mono);
+    padding: 0.1rem 0.45rem;
+    border-radius: 3px;
+}
+
+/* =============================================
+   SKILLS + TIMELINE — two column proportions
+============================================= */
+.skills-col { flex: 1; min-width: 160px; }
+.timeline-col { flex: 3; }
+.skills-timeline-section {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    background: linear-gradient(180deg, #161616 0%, #1a1a1a 40%, #0f1a0f 100%);
+    border-top: 1px solid #2a2a2a;
+    border-bottom: 1px solid #2a2a2a;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Subtle dot grid texture */
+.skills-timeline-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(107,165,57,0.06) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+}
+
+.skills-timeline-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+/* =============================================
+   SKILLS + TIMELINE — layout
+============================================= */
+.skills-timeline-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.skills-col { flex: 1; min-width: 150px; }
+.timeline-col { flex: 3; }
+
+.skills-col h2,
+.timeline-col h2 {
+    color: #6BA539;
+    border-bottom: 2px solid #00573F;
+    padding-bottom: 0.3rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+/* =============================================
+   HORIZONTAL TIMELINE — fixed-height staircase
+   Uses height (not min-height) so blocks are
+   forced to their exact sizes regardless of content
+============================================= */
+
+.timeline-col .timeline {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;      /* all items share the same bottom edge */
+    position: relative;
+    padding: 2rem 0 0;
+    gap: 0;
+    overflow-x: auto;
+}
+
+/* Horizontal line — sits just below the dots */
+.timeline-col .timeline::before {
+    content: '';
+    position: absolute;
+    bottom: 1.5rem;
+    left: 3%;
+    right: 3%;
+    height: 2px;
+    background: linear-gradient(to right, #3a6020, #6BA539 30%, #7EB8C9 60%, #C49A6C);
+    top: unset;
+}
+
+/* Each item anchors to the baseline and grows upward */
+.timeline-col .timeline-item {
+    flex: 1;
+    min-width: 85px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    justify-content: flex-end;
+}
+
+/* Shared content block styles */
+.timeline-col .timeline-item .timeline-content {
+    width: 88%;
+    overflow: hidden;
+    background: linear-gradient(170deg, #2e2e2e, #202020);
+    border-radius: 4px;
+    padding: 0.4rem 0.3rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
+    transition: transform 0.2s, box-shadow 0.2s;
+    /* FIXED heights — forces true staircase */
+    height: 50px;
+    min-height: unset;
+    font-size: unset;
+}
+
+.timeline-col .timeline-item .timeline-content:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.6);
+}
+
+/* Staircase — fixed heights, 20px per step */
+.timeline-col .timeline-item:nth-child(1) .timeline-content { height: 50px;  border-top: 2px solid #3a6020; }
+.timeline-col .timeline-item:nth-child(2) .timeline-content { height: 70px;  border-top: 2px solid #4f7e2a; }
+.timeline-col .timeline-item:nth-child(3) .timeline-content { height: 90px;  border-top: 2px solid #6BA539; }
+.timeline-col .timeline-item:nth-child(4) .timeline-content { height: 110px; border-top: 2px solid #7EB8C9; }
+.timeline-col .timeline-item:nth-child(5) .timeline-content { height: 130px; border-top: 2px solid #9ecad8; }
+.timeline-col .timeline-item:nth-child(6) .timeline-content { height: 150px; border-top: 2px solid #b08050; }
+.timeline-col .timeline-item:nth-child(7) .timeline-content { height: 170px; border-top: 3px solid #C49A6C; }
+
+/* Dot */
+.timeline-col .timeline-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #161616;
+    margin-bottom: 0.45rem;
+    flex-shrink: 0;
+    z-index: 2;
+    position: relative;
+}
+
+.timeline-col .timeline-item:nth-child(1) .timeline-dot { background: #3a6020; box-shadow: 0 0 6px rgba(58,96,32,0.8); }
+.timeline-col .timeline-item:nth-child(2) .timeline-dot { background: #4f7e2a; box-shadow: 0 0 6px rgba(79,126,42,0.8); }
+.timeline-col .timeline-item:nth-child(3) .timeline-dot { background: #6BA539; box-shadow: 0 0 8px rgba(107,165,57,0.8); }
+.timeline-col .timeline-item:nth-child(4) .timeline-dot { background: #7EB8C9; box-shadow: 0 0 8px rgba(126,184,201,0.8); }
+.timeline-col .timeline-item:nth-child(5) .timeline-dot { background: #9ecad8; box-shadow: 0 0 8px rgba(158,202,216,0.8); }
+.timeline-col .timeline-item:nth-child(6) .timeline-dot { background: #b08050; box-shadow: 0 0 8px rgba(176,128,80,0.8); }
+.timeline-col .timeline-item:nth-child(7) .timeline-dot { background: #C49A6C; width: 16px; height: 16px; box-shadow: 0 0 14px rgba(196,154,108,1); }
+
+/* Current role */
+.timeline-col .timeline-current .timeline-content h3 { color: #C49A6C; }
+
+/* Typography — text anchors to top of block */
+.timeline-col .timeline-content h3 {
+    font-size: 0.72rem;
+    color: #dddddd;
+    font-weight: 600;
+    margin: 0 0 0.15rem;
+    line-height: 1.2;
+}
+
+.timeline-col .timeline-content p {
+    font-size: 0.63rem;
+    color: #666;
+    margin: 0;
+    line-height: 1.3;
+}
+
+/* =============================================
+   FOOTER — 3 columns
+============================================= */
+.landing-footer {
+    background-color: #111111;
+    border-top: 1px solid #222222;
+    margin-top: 3rem;
+}
+
+.landing-footer-grid {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 2.5rem 1rem 1.5rem;
+    text-align: center;
+}
+
+.footer-col h3 {
+    color: #6BA539;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0 0 0.75rem;
+}
+
+.footer-col p {
+    color: #555555;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.footer-col a {
+    color: #666666;
+    font-size: 0.85rem;
+    display: block;
+    margin-bottom: 0.35rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-col a:hover { color: #6BA539; }
+
+.footer-copy {
+    text-align: center;
+    color: #333333;
+    font-size: 0.78rem;
+    padding: 1rem;
+    border-top: 1px solid #1e1e1e;
+    margin: 0;
+}
+
+/* =============================================
+   BREAKPOINT — 600px+
+============================================= */
+@media (min-width: 600px) {
+
+    .landing-hero-inner {
+        flex-direction: row;
+        text-align: left;
+        align-items: center;
+    }
+
+    .hero-btn-group { justify-content: flex-start; }
+    .hero-body { max-width: 100%; }
+
+    .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-timeline-wrap {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .skills-timeline-wrap {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .landing-footer-grid {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+    }
+}
+
+/* =============================================
+   MOBILE — horizontal timeline scrolls if needed
+============================================= */
+@media (max-width: 599px) {
+
+    .timeline-col .timeline {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding-bottom: 0.5rem;
+    }
+
+    .timeline-col .timeline-item {
+        min-width: 70px;
+    }
+}
+
+/* =============================================
+   BREAKPOINT — 900px+
+============================================= */
+@media (min-width: 900px) {
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .tools-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
