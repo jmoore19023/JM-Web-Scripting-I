@@ -5,6 +5,200 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projects | John Moore</title>
     <link rel="stylesheet" href="styles.css">
+
+    <style>
+        /* =============================================
+           PROJECTS PAGE ADDITIONS
+           Expandable card system for additional projects
+        ============================================= */
+
+        /* --- Intro --- */
+        .projects-intro p {
+            max-width: 680px;
+            color: #dddddd;
+            margin-bottom: 0;
+        }
+
+        /* --- Additional projects heading --- */
+        .additional-heading {
+            color: #6BA539;
+            border-bottom: 3px solid #00573F;
+            padding-bottom: 0.2rem;
+            margin-bottom: 1rem;
+            margin-top: 0;
+        }
+
+        /* --- Card grid --- */
+        .project-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .project-cards-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
+        @media (min-width: 900px) {
+            .project-cards-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* --- Summary card --- */
+        .p-card {
+            background: #2a2a2a;
+            border-radius: 4px;
+            border-top: 4px solid #6BA539;
+            padding: 1.1rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            user-select: none;
+            border-left: none;   /* override article default */
+        }
+
+        .p-card:nth-child(2) { border-top-color: #7EB8C9; }
+        .p-card:nth-child(3) { border-top-color: #C49A6C; }
+        .p-card:nth-child(4) { border-top-color: #6BA539; }
+        .p-card:nth-child(5) { border-top-color: #7EB8C9; }
+
+        .p-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.45);
+        }
+
+        .p-card.active { transform: none; box-shadow: 0 0 0 2px #6BA539; }
+        .p-card:nth-child(2).active { box-shadow: 0 0 0 2px #7EB8C9; }
+        .p-card:nth-child(3).active { box-shadow: 0 0 0 2px #C49A6C; }
+
+        .p-card-icon {
+            font-size: 1.6rem;
+            line-height: 1;
+            display: block;
+        }
+
+        .p-card h3 {
+            color: #eeeeee;
+            font-size: 0.95rem;
+            margin: 0;
+        }
+
+        .p-card-summary {
+            color: #aaaaaa;
+            font-size: 0.85rem;
+            margin: 0;
+            flex: 1;
+            line-height: 1.5;
+        }
+
+        .p-card-footer {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 0.1rem;
+        }
+
+        .status-badge {
+            font-size: 0.7rem;
+            padding: 0.1rem 0.45rem;
+            border-radius: 3px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            background-color: rgba(196,154,108,0.15);
+            color: #C49A6C;
+            border: 1px solid rgba(196,154,108,0.4);
+        }
+
+        .p-card-hint {
+            font-size: 0.73rem;
+            color: #555;
+            transition: color 0.2s;
+        }
+
+        .p-card:hover .p-card-hint,
+        .p-card.active .p-card-hint { color: #6BA539; }
+
+        /* --- Detail panel --- */
+        .p-detail {
+            display: none;
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 4px;
+            padding: 1.75rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            animation: fadeIn 0.22s ease;
+        }
+
+        .p-detail.open { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-6px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .p-detail-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: 1px solid #444;
+            color: #aaa;
+            font-size: 0.82rem;
+            padding: 0.2rem 0.55rem;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .p-detail-close:hover {
+            border-color: #6BA539;
+            color: #6BA539;
+            background: none;
+        }
+
+        .p-detail-header {
+            padding-right: 3rem;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.9rem;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .p-detail-header h2 {
+            margin: 0 0 0.2rem;
+            font-size: 1.3rem;
+            color: #6BA539;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .p-detail-meta {
+            color: #aaaaaa;
+            font-size: 0.82rem;
+            margin: 0;
+        }
+
+        .p-detail-blocks {
+            display: flex;
+            flex-direction: column;
+            gap: 0.9rem;
+        }
+
+        /* Reuse existing case-study-block styles with color variants */
+        .p-detail .case-study-block:nth-child(1) { border-left-color: #6BA539; }
+        .p-detail .case-study-block:nth-child(2) { border-left-color: #7EB8C9; }
+        .p-detail .case-study-block:nth-child(3) { border-left-color: #C49A6C; }
+        .p-detail .case-study-block:nth-child(4) { border-left-color: #555555; }
+
+        .p-detail .case-study-block:nth-child(1) h3 { color: #6BA539; }
+        .p-detail .case-study-block:nth-child(2) h3 { color: #7EB8C9; }
+        .p-detail .case-study-block:nth-child(3) h3 { color: #C49A6C; }
+        .p-detail .case-study-block:nth-child(4) h3 { color: #888888; }
+    </style>
 </head>
 
 <body>
@@ -28,11 +222,15 @@
 
     <main class="container">
 
-        <section id="projects-intro">
+        <!-- INTRO -->
+        <section id="projects-intro" class="projects-intro">
             <h2>Projects</h2>
-            <p class="muted">A collection of real-world work — from plant floor technology rollouts to data tools built to eliminate manual reporting.</p>
+            <p class="muted">A collection of real-world systems, tools, and initiatives built at the intersection of manufacturing operations and data. Each project started with a problem on the plant floor.</p>
         </section>
 
+        <!-- =============================================
+             MES — FULL CASE STUDY (original format)
+        ============================================= -->
         <section id="mes" class="project-featured">
             <div class="project-header">
                 <h2>Ignition MES Implementation</h2>
@@ -69,7 +267,7 @@
                         width="560"
                         height="315"
                         src="https://www.youtube.com/embed/7RWmfIVDkN8?si=Fxb-OCwRSbwKJk2J"
-                        title="YouTube video player"
+                        title="YouTube video player — What is Ignition MES"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         referrerpolicy="strict-origin-when-cross-origin"
@@ -77,19 +275,251 @@
                     </iframe>
                 </div>
             </div>
-
         </section>
 
-        <section id="excel-reporting">
-            <h2>Cross-System Reporting &amp; Data Integration</h2>
-            <div class="project-card-light">
-                <div class="project-card-icon">📊</div>
-                <div class="project-card-body">
-                    <p>With the MES now in place alongside our existing QMS and ERP systems, the real opportunity became connecting them. By merging data across all three platforms, leveraging ODBC connections and API responses to pull data directly from source systems, I'm able to surface insights for the plant that simply weren't visible when looking at any one system in isolation. This eliminates manual exports and ensures reports always reflect live data, giving leadership a fuller picture of performance, quality, and operational efficiency in one place.</p>
-                    <p>Using Microsoft Excel, Power Query, and BI tools, I built and maintain reports that automate data pulls from these systems, eliminate manual entry, and deliver consistent outputs that drive better decisions on the floor.</p>
-                    <p class="muted">Tools: Microsoft Excel · Power Query · BI Tools · Access Databases · MES · QMS · ERP</p>
+        <!-- =============================================
+             ADDITIONAL PROJECTS — expandable cards
+        ============================================= -->
+        <section id="additional-projects">
+            <h2 class="additional-heading">Additional Projects</h2>
+            <p class="muted" style="margin-bottom:1.25rem;">Click any card to expand the full case study.</p>
+
+            <!-- CARD GRID -->
+            <div class="project-cards-grid">
+
+                <article class="p-card" tabindex="0" aria-expanded="false" aria-controls="detail-forming"
+                    onclick="toggleDetail('forming',this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')toggleDetail('forming',this)">
+                    <span class="p-card-icon" aria-hidden="true">📋</span>
+                    <h3>Forming Dept. Daily Production Report</h3>
+                    <p class="p-card-summary">Replaced manual shift data collection with an automated MES API-connected workbook covering 62 shift sheets.</p>
+                    <div class="p-card-footer">
+                        <span></span>
+                        <span class="p-card-hint">Details ▼</span>
+                    </div>
+                </article>
+
+                <article class="p-card" tabindex="0" aria-expanded="false" aria-controls="detail-press"
+                    onclick="toggleDetail('press',this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')toggleDetail('press',this)">
+                    <span class="p-card-icon" aria-hidden="true">🖨</span>
+                    <h3>Press Production &amp; Speed Loss Initiative</h3>
+                    <p class="p-card-summary">ERP-driven scrap approximation at the run level, combined with a structured speed loss capture overhaul.</p>
+                    <div class="p-card-footer">
+                        <span></span>
+                        <span class="p-card-hint">Details ▼</span>
+                    </div>
+                </article>
+
+                <article class="p-card" tabindex="0" aria-expanded="false" aria-controls="detail-centerline"
+                    onclick="toggleDetail('centerline',this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')toggleDetail('centerline',this)">
+                    <span class="p-card-icon" aria-hidden="true">◎</span>
+                    <h3>Centerline Effectiveness Measurement</h3>
+                    <p class="p-card-summary">Anchor-date methodology and historical OEE analysis to measure whether machine centerlines improved performance.</p>
+                    <div class="p-card-footer">
+                        <span></span>
+                        <span class="p-card-hint">Details ▼</span>
+                    </div>
+                </article>
+
+                <article class="p-card" tabindex="0" aria-expanded="false" aria-controls="detail-sensor"
+                    onclick="toggleDetail('sensor',this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')toggleDetail('sensor',this)">
+                    <span class="p-card-icon" aria-hidden="true">⊟</span>
+                    <h3>Machine Sensor Fault Analysis</h3>
+                    <p class="p-card-summary">Fleet-wide fault frequency report flagging both excessively faulting machines and potential sensor reliability failures.</p>
+                    <div class="p-card-footer">
+                        <span class="status-badge">In Progress</span>
+                        <span class="p-card-hint">Details ▼</span>
+                    </div>
+                </article>
+
+                <article class="p-card" tabindex="0" aria-expanded="false" aria-controls="detail-crosssystem"
+                    onclick="toggleDetail('crosssystem',this)"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')toggleDetail('crosssystem',this)">
+                    <span class="p-card-icon" aria-hidden="true">📊</span>
+                    <h3>Cross-System Reporting &amp; Data Integration</h3>
+                    <p class="p-card-summary">Merged MES, QMS, and ERP data via ODBC and API into automated Excel dashboards used daily by plant leadership.</p>
+                    <div class="p-card-footer">
+                        <span></span>
+                        <span class="p-card-hint">Details ▼</span>
+                    </div>
+                </article>
+
+            </div><!-- /.project-cards-grid -->
+
+            <!-- DETAIL PANELS -->
+
+            <!-- FORMING -->
+            <div id="detail-forming" class="p-detail" role="region" aria-label="Forming report detail">
+                <button class="p-detail-close" onclick="closeDetail('forming')" aria-label="Close">✕ Close</button>
+                <div class="p-detail-header">
+                    <h2>Forming Dept. Daily Production Report</h2>
+                    <p class="p-detail-meta">Role: Developer &nbsp;|&nbsp; Scope: 2 Department Sides, 62 Shift Sheets &nbsp;|&nbsp; Tools: Excel · Power Query · MES Web API</p>
+                </div>
+                <div class="p-detail-blocks">
+                    <div class="case-study-block">
+                        <h3>▣ The Problem</h3>
+                        <p>Before this report existed, supervisors had to physically walk to every machine on the floor, manually record production numbers by hand, and enter that data into an outdated workbook with no automation — twice a day, every day. The old workbook had no connection to live systems and provided no department-level visibility.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>⚙ How It Was Built</h3>
+                        <p>I built an analysis table inside the MES that the system references and exports as a CSV. Power Query connects to the MES via its web API, pulling production data from all machines simultaneously — either live mid-shift or at shift end depending on which query is used.</p>
+                        <p>The workbook contains 62 sheets — one per shift, two per day — covering a full month. All API calls are built into a single parameterized M function so each sheet passes its own date and shift parameters into the same underlying logic. Metadata tables layer in department and machine context that the raw API output alone couldn't provide.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>∑ The Outcome</h3>
+                        <p>Supervisors no longer walk the floor to collect numbers. Production data for every line in both sides of the forming department is pulled automatically and available on refresh. The report also serves as a shift turnover tool — supervisors log notes, flag issues, and hand off context shift to shift. OEE and production totals are surfaced at line level and rolled up for each side of the department.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>◈ Technical Highlights</h3>
+                        <ul class="project-list">
+                            <li>Web API connection via Power Query pulling live MES data across all forming machines simultaneously</li>
+                            <li>Single parameterized M function drives all 62 sheet queries — one place to maintain</li>
+                            <li>MES analysis table built internally, exported as CSV and consumed by the query layer</li>
+                            <li>Metadata tables enrich raw API output with department structure and machine context</li>
+                            <li>OEE and production totals calculated at line level and aggregated by department side</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
+
+            <!-- PRESS -->
+            <div id="detail-press" class="p-detail" role="region" aria-label="Press report detail">
+                <button class="p-detail-close" onclick="closeDetail('press')" aria-label="Close">✕ Close</button>
+                <div class="p-detail-header">
+                    <h2>Press Production Report &amp; Speed Loss Initiative</h2>
+                    <p class="p-detail-meta">Role: Developer &nbsp;|&nbsp; Scope: Full Press Department &nbsp;|&nbsp; Tools: Excel · Power Query · ERP · Operator Production Books</p>
+                </div>
+                <div class="p-detail-blocks">
+                    <div class="case-study-block">
+                        <h3>▣ The Problem</h3>
+                        <p>The press department had no reliable way to track material consumption or approximate scrap at the run level. Without roll count and starting linear footage, there was no way to close the loop on what was actually used versus what was produced. Speed loss — one of the biggest hidden contributors to poor OEE — was also going completely uncaptured, making it impossible to identify whether slowdowns were tied to a specific job, deck, ink color, operator, or shift pattern.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>⚙ How It Was Built</h3>
+                        <p>The report connects to the ERP system via Power Query to pull run-level data for every press. Combining linear feet produced with roll count and starting linear footage yields a scrap approximation per run — a metric that previously required manual estimation or didn't exist at all.</p>
+                        <p>For speed loss, I overhauled the department's operator production books to add structured capture fields. Operators log speed reductions as part of their normal workflow, with some data points feeding automatically from connected systems and others entered manually. Power Query then joins this data to the ERP run data for trend analysis.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>∑ The Outcome</h3>
+                        <p>Run-level visibility into linear feet produced, rolls consumed, and approximate scrap — all pulled automatically from ERP. The overhauled production books gave the department its first structured speed loss dataset, enabling trend analysis across job, deck, color, machine, operator, and shift.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>◈ Technical Highlights</h3>
+                        <ul class="project-list">
+                            <li>ERP integration via Power Query pulling run-level linear feet, roll count, and starting footage per press</li>
+                            <li>Scrap approximation calculated at the run level by combining ERP output with roll starting footage</li>
+                            <li>Production book overhaul added structured speed loss fields with minimal added operator burden</li>
+                            <li>Hybrid data capture: some fields auto-populated from connected systems, others manually entered</li>
+                            <li>Speed loss joined to ERP run data — trend analysis across job, deck, color, machine, operator, and shift</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CENTERLINE -->
+            <div id="detail-centerline" class="p-detail" role="region" aria-label="Centerline effectiveness detail">
+                <button class="p-detail-close" onclick="closeDetail('centerline')" aria-label="Close">✕ Close</button>
+                <div class="p-detail-header">
+                    <h2>Centerline Effectiveness Measurement System</h2>
+                    <p class="p-detail-meta">Role: Developer &nbsp;|&nbsp; Scope: Facility-Wide Machine Fleet &nbsp;|&nbsp; Tools: Excel · Power Query · MES · Historical OEE Data</p>
+                </div>
+                <div class="p-detail-blocks">
+                    <div class="case-study-block">
+                        <h3>▣ The Problem</h3>
+                        <p>Centerline events — resetting a machine to a known baseline mechanical state — are a significant investment of time and labor. Without a structured way to measure before and after OEE, there was no reliable way to know whether a centerline actually moved the needle. Decisions about which machines needed intervention were largely subjective, and the impact of completed centerlines went unmeasured.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>⚙ How It Was Built</h3>
+                        <p>The system starts with a consistent process for identifying chronically struggling machines based on sustained OEE trends. Once a centerline is completed, an anchor date is recorded — the dividing line between before and after periods used in analysis.</p>
+                        <p>Large sets of historical OEE data are pulled from the MES for every machine in the fleet. Power Query automates all transformation and computation using heavy grouping, indexing, and cross-dataset compilation to align pre- and post-centerline windows per machine. Everything runs on refresh with no manual data manipulation required.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>∑ The Outcome</h3>
+                        <p>For the first time, the facility has a repeatable, data-driven way to evaluate the effectiveness of centerline events. CI can point to specific OEE deltas tied to specific interventions and build a historical record that informs future decisions about where to focus maintenance and improvement efforts.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>◈ Technical Highlights</h3>
+                        <ul class="project-list">
+                            <li>MES historical OEE data compiled across the full machine fleet and loaded into Power Query</li>
+                            <li>Anchor date system records centerline completion dates per machine as the before/after dividing line</li>
+                            <li>Grouping, indexing, and cross-dataset compilation align pre- and post-centerline windows per machine</li>
+                            <li>All transformations and OEE computations automated via Power Query — no manual manipulation on refresh</li>
+                            <li>Output normalizes comparison windows so before/after OEE deltas are consistently structured</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SENSOR -->
+            <div id="detail-sensor" class="p-detail" role="region" aria-label="Sensor fault detail">
+                <button class="p-detail-close" onclick="closeDetail('sensor')" aria-label="Close">✕ Close</button>
+                <div class="p-detail-header">
+                    <h2>Machine Sensor Fault Analysis Report</h2>
+                    <p class="p-detail-meta">Role: Developer &nbsp;|&nbsp; Status: In Progress &nbsp;|&nbsp; Tools: Excel · Power Query · MES Sensor Data · Web API</p>
+                </div>
+                <div class="p-detail-blocks">
+                    <div class="case-study-block">
+                        <h3>▣ The Problem</h3>
+                        <p>Machine sensors generate faults that stop equipment when something goes out of tolerance — but there was no systematic way to analyze fault patterns across the fleet. High fault counts drive downtime and can signal conditions leading to quality defects. But the less obvious problem is equally important — very few or zero faults may indicate a sensor reliability issue. Both extremes are signals that were going undetected.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>⚙ How It Was Built</h3>
+                        <p>Sensor fault data is pulled from the MES via Power Query and the platform's web API. The data is transformed to count fault occurrences per machine, broken down by fault type and sensor, and organized into time-based sequences to surface how frequency changes over time.</p>
+                        <p>The report flags machines at both ends of the spectrum — high fault counts surfaced for mechanical or process review, low or zero counts flagged as potential sensor reliability concerns. A side-by-side machine comparison view gives reviewers a consistent basis for prioritizing where to focus. Threshold values are currently being validated against known machine histories.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>∑ The Outcome</h3>
+                        <p>Maintenance and CI will have a tool to proactively identify two categories of risk that were previously invisible — machines being stopped excessively, and machines where sensors may have stopped doing their job. Both are caught before they become larger problems.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>◈ Technical Highlights</h3>
+                        <ul class="project-list">
+                            <li>MES sensor fault data pulled via Power Query and web API</li>
+                            <li>Fault counts aggregated per machine and broken down by fault type and sensor</li>
+                            <li>Fault frequency tracked over time to surface behavioral trends per machine</li>
+                            <li>Two-tailed flagging: high counts flagged for review, low or zero counts flagged for sensor reliability follow-up</li>
+                            <li>Side-by-side machine comparison for fleet-wide prioritization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CROSS-SYSTEM -->
+            <div id="detail-crosssystem" class="p-detail" role="region" aria-label="Cross-system reporting detail">
+                <button class="p-detail-close" onclick="closeDetail('crosssystem')" aria-label="Close">✕ Close</button>
+                <div class="p-detail-header">
+                    <h2>Cross-System Reporting &amp; Data Integration</h2>
+                    <p class="p-detail-meta">Role: Developer &nbsp;|&nbsp; Tools: Excel · Power Query · BI Tools · Access · MES · QMS · ERP</p>
+                </div>
+                <div class="p-detail-blocks">
+                    <div class="case-study-block">
+                        <h3>▣ The Problem</h3>
+                        <p>The MES, QMS, and ERP systems each held a piece of the picture, but no one was looking at all three together. Cross-system insights — connecting quality results to production conditions, or scheduling data to actual throughput — required manual exports and hours of reconciliation.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>⚙ How It Was Built</h3>
+                        <p>Using ODBC connections and API responses, Power Query pulls data directly from all three source systems into a single Excel layer. Transformation logic joins, cleans, and shapes the data into consistent output tables that feed the dashboards. Reports refresh against live data — no manual exports, no copy-paste reconciliation.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>∑ The Outcome</h3>
+                        <p>Leadership now has a fuller picture of performance, quality, and operational efficiency in one place. Insights that required hours of manual work to surface are available on demand, and the reports serve as connective tissue between systems that were never designed to talk to each other.</p>
+                    </div>
+                    <div class="case-study-block">
+                        <h3>◈ Technical Highlights</h3>
+                        <ul class="project-list">
+                            <li>ODBC connections and REST API responses pulling live data from MES, QMS, and ERP simultaneously</li>
+                            <li>Power Query transformation layer joins and shapes data across all three sources</li>
+                            <li>Access databases used as intermediate query layer for legacy data sources</li>
+                            <li>Output feeds Excel dashboards used daily by supervisors and plant managers</li>
+                            <li>Designed for maintainability — no developer required to run or refresh reports</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
     </main>
@@ -102,6 +532,37 @@
             <a href="https://github.com/jmoore19023/JM-Web-Scripting-I" target="_blank" rel="noopener noreferrer">GitHub</a>
         </p>
     </footer>
+
+    <script>
+        let activeId   = null;
+        let activeCard = null;
+
+        function toggleDetail(id, card) {
+            if (activeId === id) { closeDetail(id); return; }
+            if (activeId) closeDetail(activeId);
+
+            const panel = document.getElementById('detail-' + id);
+            panel.classList.add('open');
+            card.classList.add('active');
+            card.setAttribute('aria-expanded', 'true');
+            activeId   = id;
+            activeCard = card;
+
+            setTimeout(() => {
+                panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 50);
+        }
+
+        function closeDetail(id) {
+            document.getElementById('detail-' + id).classList.remove('open');
+            if (activeCard) {
+                activeCard.classList.remove('active');
+                activeCard.setAttribute('aria-expanded', 'false');
+            }
+            activeId   = null;
+            activeCard = null;
+        }
+    </script>
 
 </body>
 </html>

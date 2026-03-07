@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing | John Moore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="landing.css">
+</head>
+
+<body>
+
+    <!-- =============================================
+         NAVBAR — Flexbox (assignment requirement)
+    ============================================= -->
+    <header>
+        <div class="header-inner">
+            <div class="header-brand">
+                <h1>John Moore</h1>
+                <p>Continuous Improvement Specialist &amp; Aspiring Data Analyst</p>
+            </div>
+            <nav aria-label="Primary navigation">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+
+        <!-- =============================================
+             HERO — headshot + intro text
+             Single column (mobile) → two column (desktop)
+        ============================================= -->
+        <section class="landing-hero" aria-labelledby="hero-heading">
+            <div class="landing-hero-inner container">
+
+                <div class="landing-hero-photo">
+                    <img
+                        src="images/headshot.jpg"
+                        alt="John Moore, Continuous Improvement Specialist"
+                        width="160"
+                        height="160">
+                </div>
+
+                <div class="landing-hero-text">
+                    <h2 id="hero-heading">John Moore</h2>
+                    <p class="hero-role">Continuous Improvement Specialist &amp; Aspiring Data Analyst</p>
+                    <p class="hero-tagline">From the plant floor to the data pipeline. One class at a time.</p>
+                    <p class="hero-body">8+ years in food service manufacturing. I connect MES, ERP, and QMS systems to eliminate manual reporting and surface insights that actually move the needle.</p>
+                    <div class="hero-btn-group">
+                        <a href="projects.html" class="btn">View My Work</a>
+                        <a href="contact.html" class="btn-outline">Get in Touch</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- =============================================
+             TOOLS & FOCUS — what I work with
+        ============================================= -->
+        <div class="tools-section" aria-labelledby="tools-heading">
+            <div class="tools-inner">
+                <h2 id="tools-heading">What I Work With</h2>
+                <p class="muted">The tools and systems at the core of my work.</p>
+
+                <div class="tools-grid">
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">⊞</span>
+                        <div class="tool-info">
+                            <p class="tool-name">Excel &amp; Power Query</p>
+                            <p class="tool-desc">Dashboards, automation, data transformation</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">⚙</span>
+                        <div class="tool-info">
+                            <p class="tool-name">MES — Ignition</p>
+                            <p class="tool-desc">Machine data, OEE, real-time monitoring</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">◉</span>
+                        <div class="tool-info">
+                            <p class="tool-name">ERP &amp; QMS</p>
+                            <p class="tool-desc">Production orders, quality, cross-system joins</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">⊙</span>
+                        <div class="tool-info">
+                            <p class="tool-name">SQL &amp; Access</p>
+                            <p class="tool-desc">Legacy databases, intermediate query layer</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">🐍</span>
+                        <div class="tool-info">
+                            <p class="tool-name">Python</p>
+                            <p class="tool-desc">Data generation, automation, scripting</p>
+                        </div>
+                    </div>
+
+                    <div class="tool-pill">
+                        <span class="tool-icon" aria-hidden="true">⟨/⟩</span>
+                        <div class="tool-info">
+                            <p class="tool-name">HTML, CSS &amp; JavaScript</p>
+                            <p class="tool-desc">Web development, this site</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <!-- =============================================
+                 PROJECTS GRID — CSS Grid (assignment requirement)
+                 6 cards: 1 col → 2 col → 3 col
+            ============================================= -->
+            <section class="landing-section" aria-labelledby="projects-heading">
+                <h2 id="projects-heading">Projects</h2>
+                <p class="section-sub">Real systems built to solve real problems on the plant floor.</p>
+
+                <div class="projects-grid">
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">⚙</span>
+                        <h3 class="tile-title">Ignition MES Implementation</h3>
+                        <p class="tile-summary">Facilitated deployment of real-time machine monitoring across 100+ pieces of equipment facility-wide.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">MES</span>
+                            <span class="tag">Ignition</span>
+                            <span class="tag">IoT</span>
+                        </div>
+                    </article>
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">📋</span>
+                        <h3 class="tile-title">Forming Dept. Daily Production Report</h3>
+                        <p class="tile-summary">Replaced manual shift data collection with an automated MES API-connected workbook across 62 shift sheets.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">Power Query</span>
+                            <span class="tag">Web API</span>
+                            <span class="tag">Excel</span>
+                        </div>
+                    </article>
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">🖨</span>
+                        <h3 class="tile-title">Press Production &amp; Speed Loss</h3>
+                        <p class="tile-summary">ERP-driven scrap approximation at the run level plus a structured speed loss capture overhaul across the press department.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">ERP</span>
+                            <span class="tag">Power Query</span>
+                            <span class="tag">OEE</span>
+                        </div>
+                    </article>
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">◎</span>
+                        <h3 class="tile-title">Centerline Effectiveness Measurement</h3>
+                        <p class="tile-summary">Anchor-date methodology and historical OEE analysis to measure whether machine centerlines actually improved performance.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">OEE</span>
+                            <span class="tag">Power Query</span>
+                            <span class="tag">MES</span>
+                        </div>
+                    </article>
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">⊟</span>
+                        <h3 class="tile-title">Machine Sensor Fault Analysis</h3>
+                        <p class="tile-summary">Fleet-wide fault frequency report flagging both excessively faulting machines and potential sensor reliability failures.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">MES</span>
+                            <span class="tag">Web API</span>
+                            <span class="tag">In Progress</span>
+                        </div>
+                    </article>
+
+                    <article class="project-tile">
+                        <span class="tile-icon" aria-hidden="true">📊</span>
+                        <h3 class="tile-title">Cross-System Reporting</h3>
+                        <p class="tile-summary">Merged MES, QMS, and ERP data via ODBC and API into automated Excel dashboards used daily by plant leadership.</p>
+                        <div class="tile-tag-row">
+                            <span class="tag">ODBC</span>
+                            <span class="tag">Power Query</span>
+                            <span class="tag">BI</span>
+                        </div>
+                    </article>
+
+                </div>
+            </section>
+
+            <!-- =============================================
+                 SKILLS + TIMELINE
+                 Side by side on desktop (assignment requirement)
+            ============================================= -->
+
+        </div><!-- /.container -->
+
+        <div class="skills-timeline-section">
+            <div class="skills-timeline-inner">
+                <div class="skills-timeline-wrap">
+
+                    <div class="skills-col">
+                        <h2 id="skills-heading">Skills</h2>
+                        <ul class="skills-list">
+                            <li>Python</li>
+                            <li>SQL &amp; Access Databases</li>
+                            <li>Excel &amp; Power Query</li>
+                            <li>HTML &amp; CSS</li>
+                            <li>JavaScript</li>
+                            <li>C# / OOP Fundamentals</li>
+                            <li>MES / ERP / QMS Systems</li>
+                            <li>QlikSense BI Reporting</li>
+                            <li>Lean &amp; Six Sigma</li>
+                            <li>Process Optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="timeline-col">
+                        <h2 id="timeline-heading">Career at GPI</h2>
+                        <div class="timeline">
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Operator</h3>
+                                    <p class="muted">Where it all started</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Pack Team Leader</h3>
+                                    <p class="muted">First leadership role</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Trainer</h3>
+                                    <p class="muted">Process &amp; standards</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Lead Operator</h3>
+                                    <p class="muted">Floor-level performance</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Group Leader</h3>
+                                    <p class="muted">Cross-team coordination</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>Data Collection Coordinator</h3>
+                                    <p class="muted">Data became the focus</p>
+                                </div>
+                            </div>
+                            <div class="timeline-item timeline-current">
+                                <span class="timeline-dot"></span>
+                                <div class="timeline-content">
+                                    <h3>CI Specialist</h3>
+                                    <p class="muted">Current role, still climbing</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- =============================================
+         FOOTER — 3 columns via Grid (assignment requirement)
+    ============================================= -->
+    <footer class="landing-footer">
+        <div class="landing-footer-grid">
+
+            <div class="footer-col">
+                <h3>John Moore</h3>
+                <p>CI Specialist &amp; Aspiring Data Analyst. Finishing an AAS in Applied Science for Programming.</p>
+            </div>
+
+            <div class="footer-col">
+                <h3>Navigation</h3>
+                <a href="index.html">Home</a>
+                <a href="about.html">About</a>
+                <a href="projects.html">Projects</a>
+                <a href="contact.html">Contact</a>
+            </div>
+
+            <div class="footer-col">
+                <h3>Connect</h3>
+                <a href="https://www.linkedin.com/in/john-moore-960768106/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                <a href="https://github.com/jmoore19023/JM-Web-Scripting-I" target="_blank" rel="noopener noreferrer">GitHub</a>
+                <a href="mailto:jmoore19023@hotmail.com">jmoore19023@hotmail.com</a>
+            </div>
+
+        </div>
+        <p class="footer-copy">&copy; 2026 John Moore</p>
+    </footer>
+
+</body>
+</html>
