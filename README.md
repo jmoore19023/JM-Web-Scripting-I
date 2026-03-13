@@ -20,6 +20,15 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ---
 
+## Landing Page Features
+
+- CSS Grid and Flexbox layout, mobile-first (600px, 900px breakpoints)
+- Responsive nav with hamburger toggle on mobile
+- Hover transitions, hero fade-in animation
+- Dark/light mode toggle with localStorage persistence
+
+---
+
 ## Screenshots
 
 ### Homepage
@@ -30,3 +39,9 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ### Mobile
 ![Mobile screenshot](images/LandingPage1%20-%20Mobile.png)
+
+### Desktop (Light)
+![Desktop screenshot](images/LandingPage1%20(Light).png)
+
+### Mobile (Light)
+![Mobile screenshot](images/LandingPage1%20-%20Mobile%20(Light).png)
