@@ -31,17 +31,5 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ## Screenshots
 
-### Homepage
-![Homepage screenshot](images/screenshot-home.png)
-
-### Desktop
-![Desktop screenshot](images/LandingPage1.png)
-
-### Mobile
-![Mobile screenshot](images/LandingPage1%20-%20Mobile.png)
-
-### Desktop (Light)
-![Desktop screenshot](images/LandingPage1%20(Light).png)
-
-### Mobile (Light)
-![Mobile screenshot](images/LandingPage1%20-%20Mobile%20(Light).png)
+### To-Do List Screenshot
+![To-Do List Screenshot](images/To-Do%20List%20Screenshot.png)
