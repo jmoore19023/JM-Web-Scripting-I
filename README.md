@@ -29,7 +29,8 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ---
 
-## Screenshots
+## Meal Finder — 
 
-### To-Do List Screenshot
-![To-Do List Screenshot](images/To-Do%20List%20Screenshot.png)
+A recipe search page built with HTML, CSS, and JavaScript. Users can search for any dish or ingredient and view results pulled from the free TheMealDB API, including meal name, category, region, and photo.
+
+https://jmoore19023.github.io/JM-Web-Scripting-I/API-Search.html
