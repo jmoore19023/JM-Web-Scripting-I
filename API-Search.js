@@ -1,7 +1,3 @@
-// ============================================================
-//  api-search.js — Meal Finder logic
-//  API: TheMealDB  https://www.themealdb.com/api.php
-// ============================================================
 
 const searchBtn   = document.getElementById("searchBtn");
 const searchInput = document.getElementById("searchInput");
