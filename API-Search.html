@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Meal Finder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="API-Search.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <header class="site-header">
+      <div class="header-inner">
+        <span class="header-label">Recipe Explorer</span>
+        <h1 class="site-title">What are you <em>craving?</em></h1>
+        <p class="site-desc">Search any ingredient or dish name — we'll pull real recipes from TheMealDB.</p>
+      </div>
+      <div class="header-bg-text" aria-hidden="true">EAT</div>
+    </header>
+
+    <main class="main-content">
+
+      <section class="search-section">
+        <div class="search-bar">
+          <input
+            type="text"
+            id="searchInput"
+            class="search-input"
+            placeholder="e.g. chicken, pasta, sushi…"
+            autocomplete="off"
+            aria-label="Search for a meal"
+          />
+          <button id="searchBtn" class="search-btn" aria-label="Search">
+            <span class="btn-text">Search</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <div id="status" class="status-message" role="status" aria-live="polite"></div>
+
+      <section id="results" class="results-grid" aria-label="Search results"></section>
+
+    </main>
+
+    <footer class="site-footer">
+      Data provided by <a href="https://www.themealdb.com" target="_blank" rel="noopener">TheMealDB</a>
+    </footer>
+
+  </div>
+
+  <script src="API-Search.js"></script>
+</body>
+</html>
