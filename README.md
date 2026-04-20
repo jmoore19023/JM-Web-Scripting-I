@@ -29,8 +29,8 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ---
 
-## Meal Finder — 
+## Word Guess Game — 
 
-A recipe search page built with HTML, CSS, and JavaScript. Users can search for any dish or ingredient and view results pulled from the free TheMealDB API, including meal name, category, region, and photo.
+Built using HTML, CSS, and JAvascript with basic game logic and UI rendering. Functions kept separate with central state object driving updates to the board.
 
-https://jmoore19023.github.io/JM-Web-Scripting-I/API-Search.html
+https://jmoore19023.github.io/JM-Web-Scripting-I/WordleGame.html
