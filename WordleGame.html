@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Word Guess Game</title>
+  <link rel="stylesheet" href="WordleGame.css" />
+</head>
+<body>
+
+  <div class="card">
+
+    <header>
+      <h1>Word Guess</h1>
+      <p class="subtitle">Guess the hidden 5-letter word in 6 tries.</p>
+    </header>
+
+    <div class="legend">
+      <div class="legend-item"><div class="legend-dot correct"></div> Correct spot</div>
+      <div class="legend-item"><div class="legend-dot present"></div> Wrong spot</div>
+      <div class="legend-item"><div class="legend-dot absent"></div> Not in word</div>
+    </div>
+
+    <main>
+      <div id="board" class="board" aria-label="Game board"></div>
+    </main>
+
+    <div class="card-footer">
+      <p id="status" class="status" aria-live="polite">Type a word to begin.</p>
+      <button id="restart-btn" class="restart-btn">Restart Game</button>
+    </div>
+
+  </div>
+
+  <script src="WordleGame.js"></script>
+</body>
+</html>
