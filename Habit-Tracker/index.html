@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker | John Moore</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- =============================================
+         HEADER
+    ============================================= -->
+    <header>
+        <div class="header-inner">
+            <div class="header-brand">
+                <a href="../index.html" class="brand-link">← John Moore</a>
+                <h1>Habit Tracker</h1>
+            </div>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                <span class="theme-icon" aria-hidden="true">☾</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- =============================================
+         MAIN APP
+    ============================================= -->
+    <main class="container">
+
+        <!-- TODAY'S DATE + SUMMARY -->
+        <section class="summary-bar">
+            <div class="summary-top">
+                <p id="todayDate" class="today-date"></p>
+                <p id="progressSummary" class="progress-summary">No habits yet. Add one below!</p>
+            </div>
+            <!-- Progress bar — hidden until habits exist -->
+            <div class="progress-bar-wrap" id="progressBarWrap" style="display:none;">
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progressBarFill"></div>
+                </div>
+                <span class="progress-bar-label" id="progressBarLabel"></span>
+            </div>
+        </section>
+
+        <!-- ADD HABIT FORM -->
+        <section class="add-section">
+            <h2>Add a Habit</h2>
+            <form id="addHabitForm" novalidate>
+                <div class="form-row">
+                    <input
+                        type="text"
+                        id="habitInput"
+                        placeholder="e.g. Drink 8 glasses of water"
+                        maxlength="60"
+                        autocomplete="off"
+                        aria-label="New habit name">
+                    <button type="submit" class="btn">Add Habit</button>
+                </div>
+                <!-- Validation message shown if input is blank or duplicate -->
+                <p id="formError" class="form-error" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <!-- HABIT LIST -->
+        <section class="habits-section">
+            <div class="habits-header">
+                <h2>Today's Habits</h2>
+                <!-- Filter buttons — controls which habits are shown -->
+                <div class="filter-bar" role="group" aria-label="Filter habits">
+                    <button class="filter-btn" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="incomplete">Incomplete</button>
+                    <button class="filter-btn" data-filter="done">Done</button>
+                </div>
+            </div>
+
+            <!-- Empty state shown when no habits exist -->
+            <p id="emptyState" class="empty-state">You haven't added any habits yet.</p>
+
+            <!-- Habits are injected here by JavaScript -->
+            <ul id="habitList" class="habit-list"></ul>
+        </section>
+
+        <!-- WEEKLY VIEW -->
+        <section class="weekly-section" id="weeklySection">
+            <h2>This Week</h2>
+            <p class="muted">A 7-day snapshot of your consistency.</p>
+            <!-- Weekly grid is injected here by JavaScript -->
+            <div id="weeklyGrid" class="weekly-grid"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 John Moore &nbsp;|&nbsp; <a href="../index.html">Back to Main Site</a></p>
+    </footer>
+
+    <!-- JS files — habits.js loads first (data layer), then app.js (UI layer) -->
+    <script src="habits.js"></script>
+    <script src="app.js"></script>
+
+</body>
+</html>

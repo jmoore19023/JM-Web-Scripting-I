@@ -1,0 +1,635 @@
+/* =============================================
+   styles.css — Habit Tracker
+   Self-contained styles. No dependency on
+   the main site's styles.css or landing.css.
+============================================= */
+
+
+/* ── CSS Variables (Light Theme — default) ── */
+:root,
+[data-theme="light"] {
+    --bg:           #f0f0ed;
+    --bg-surface:   #e4e4e0;
+    --bg-card:      #ffffff;
+    --border:       #d0cfcb;
+    --text:         #1e1e1e;
+    --text-muted:   #666666;
+    --text-dim:     #aaaaaa;
+    --green:        #6BA539;
+    --green-dark:   #00573F;
+    --warm:         #C49A6C;
+    --blue:         #7EB8C9;
+    --done-bg:      rgba(107, 165, 57, 0.08);
+    --done-border:  rgba(107, 165, 57, 0.4);
+    --error:        #cc3333;
+    --shadow:       rgba(0, 0, 0, 0.08);
+}
+
+/* ── CSS Variables (Dark Theme) ─────────────── */
+[data-theme="dark"] {
+    --bg:           #171512;
+    --bg-surface:   #272320;
+    --bg-card:      #38332e;
+    --border:       #4a4540;
+    --text:         #f0ece6;
+    --text-muted:   #a89880;
+    --text-dim:     #6a5f52;
+    --green:        #7ec44a;
+    --green-dark:   #2a7a50;
+    --warm:         #d4aa7c;
+    --blue:         #8ec8d9;
+    --done-bg:      rgba(196, 154, 108, 0.1);
+    --done-border:  rgba(196, 154, 108, 0.4);
+    --error:        #e06060;
+    --shadow:       rgba(0, 0, 0, 0.4);
+}
+
+
+/* ── Reset & Base ────────────────────────────── */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3 { margin-top: 0; }
+
+h2 {
+    color: var(--green);
+    border-bottom: 3px solid var(--green-dark);
+    padding-bottom: 0.2rem;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+a {
+    color: var(--warm);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--green);
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+
+/* ── Layout ──────────────────────────────────── */
+.container {
+    max-width: 760px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1rem 1.25rem 3rem;
+}
+
+main {
+    flex: 1;
+}
+
+
+/* ── Header — matches main site style ───────── */
+header {
+    background-color: rgba(0, 0, 0, 0.75);
+    border-bottom: 3px solid #6BA539;
+    padding: 1.2rem 2rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header-inner {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.header-brand h1 {
+    margin: 0 0 0.1rem 0;
+    font-size: 1.4rem;
+    color: #ffffff;
+}
+
+.brand-link {
+    font-size: 0.8rem;
+    color: #C49A6C;
+    display: block;
+    margin-bottom: 0.1rem;
+    font-weight: bold;
+}
+
+.brand-link:hover {
+    color: #6BA539;
+}
+
+
+/* ── Theme Toggle ────────────────────────────── */
+.theme-toggle {
+    background: transparent;
+    border: 1.5px solid #555555;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #aaaaaa;
+    font-size: 1rem;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.theme-toggle:hover {
+    border-color: #6BA539;
+    color: #6BA539;
+}
+
+
+/* ── Summary Bar ─────────────────────────────── */
+.summary-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.9rem 1rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--green);
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.summary-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.today-date {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin: 0;
+}
+
+.progress-summary {
+    font-weight: bold;
+    font-size: 0.92rem;
+    color: var(--warm);
+    margin: 0;
+}
+
+.progress-summary.all-done {
+    color: var(--green);
+}
+
+
+/* ── Progress Bar ────────────────────────────── */
+.progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 0.2rem;
+}
+
+.progress-bar-track {
+    flex: 1;
+    height: 6px;
+    background-color: var(--bg-surface);
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    width: 0%;
+    background-color: var(--warm);
+    border-radius: 99px;
+    transition: width 0.4s ease, background-color 0.4s ease;
+}
+
+.progress-bar-fill.complete {
+    background-color: var(--green);
+}
+
+.progress-bar-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    min-width: 2.5rem;
+    text-align: right;
+}
+
+
+/* ── Add Habit Form ──────────────────────────── */
+.add-section {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--blue);
+    border-radius: 4px;
+    padding: 1.25rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+.form-row {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.form-row input {
+    flex: 1;
+    min-width: 200px;
+    padding: 0.55rem 0.75rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+
+.form-row input:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+.btn {
+    background-color: var(--green-dark);
+    color: white;
+    border: 2px solid var(--green);
+    border-radius: 4px;
+    padding: 0.55rem 1.25rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    background-color: var(--green);
+}
+
+.form-error {
+    color: var(--error);
+    font-size: 0.85rem;
+    margin: 0.4rem 0 0;
+    min-height: 1.1rem;
+}
+
+
+/* ── Habits Section ──────────────────────────── */
+.habits-section {
+    margin-bottom: 2rem;
+}
+
+.habits-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.habits-header h2 {
+    margin-bottom: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.filter-bar {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.filter-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 0.25rem 0.65rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.filter-btn:hover {
+    border-color: var(--green);
+    color: var(--green);
+}
+
+.filter-btn.active {
+    background-color: var(--green-dark);
+    border-color: var(--green);
+    color: white;
+}
+
+.empty-state {
+    color: var(--text-dim);
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+
+/* ── Individual Habit Item ───────────────────── */
+.habit-item {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--green);
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    padding: 0.75rem 1rem;
+    box-shadow: 0 2px 6px var(--shadow);
+    transition: border-color 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.habit-item:hover {
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+.habit-item.is-done {
+    background-color: var(--done-bg);
+    border-left-color: var(--green);
+    border-color: var(--done-border);
+}
+
+.habit-main {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.check-btn {
+    width: 28px;
+    height: 28px;
+    min-width: 28px;
+    border-radius: 50%;
+    border: 2px solid var(--border);
+    background: transparent;
+    color: var(--green);
+    font-size: 0.85rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.check-btn.checked {
+    border-color: var(--green);
+    background-color: var(--green);
+    color: white;
+}
+
+.check-btn:hover {
+    border-color: var(--green);
+}
+
+.habit-name {
+    flex: 1;
+    font-size: 0.95rem;
+    word-break: break-word;
+}
+
+.edit-input {
+    padding: 0.2rem 0.4rem;
+    font-size: 0.95rem;
+    background-color: var(--bg);
+    border: 1px solid var(--green);
+    border-radius: 3px;
+    color: var(--text);
+    width: 100%;
+}
+
+.edit-input:focus {
+    outline: none;
+}
+
+.streak-badge {
+    font-size: 0.8rem;
+    color: var(--warm);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.habit-actions {
+    display: flex;
+    gap: 0.35rem;
+    flex-shrink: 0;
+}
+
+.action-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.edit-btn:hover {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.delete-btn:hover {
+    border-color: var(--error);
+    color: var(--error);
+}
+
+.note-row {
+    margin-top: 0.6rem;
+}
+
+.note-input {
+    width: 100%;
+    padding: 0.35rem 0.6rem;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    transition: border-color 0.2s ease;
+}
+
+.note-input:focus {
+    outline: none;
+    border-color: var(--blue);
+    color: var(--text);
+}
+
+
+/* ── Reorder Buttons ─────────────────────────── */
+.reorder-btns {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    flex-shrink: 0;
+}
+
+.reorder-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    color: var(--text-dim);
+    font-size: 0.55rem;
+    width: 20px;
+    height: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.reorder-btn:hover:not(:disabled) {
+    border-color: var(--blue);
+    color: var(--blue);
+}
+
+.reorder-btn:disabled {
+    opacity: 0.2;
+    cursor: default;
+}
+
+
+/* ── Weekly Grid ─────────────────────────────── */
+.weekly-section {
+    margin-bottom: 2rem;
+}
+
+.muted {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    margin-top: -0.5rem;
+    margin-bottom: 1rem;
+}
+
+.weekly-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.week-row {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 0.7rem 0.75rem;
+    box-shadow: 0 2px 6px var(--shadow);
+}
+
+.week-label {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.week-cells {
+    display: flex;
+    gap: 0.35rem;
+}
+
+.week-cell {
+    flex: 1;
+    text-align: center;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 0.25rem 0.1rem;
+    min-width: 34px;
+    cursor: default;
+}
+
+.week-cell--today {
+    border-color: var(--warm);
+}
+
+.week-cell--done {
+    background-color: rgba(107, 165, 57, 0.15);
+    border-color: var(--green);
+}
+
+.week-day {
+    display: block;
+    font-size: 0.65rem;
+    color: var(--text-dim);
+    margin-bottom: 0.15rem;
+}
+
+.week-dot {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--green);
+    font-weight: bold;
+    min-height: 1rem;
+}
+
+
+/* ── Footer — matches main site ─────────────── */
+footer {
+    background-color: #111111;
+    border-top: 1px solid #1e1e1e;
+    text-align: center;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    color: #aaaaaa;
+}
+
+footer a {
+    color: #C49A6C;
+}
+
+footer a:hover {
+    color: #6BA539;
+}
+
+
+/* ── Responsive ──────────────────────────────── */
+@media (max-width: 600px) {
+
+    .summary-top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .week-cells {
+        gap: 0.2rem;
+    }
+
+    .week-cell {
+        min-width: 28px;
+    }
+}

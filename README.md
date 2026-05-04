@@ -29,8 +29,8 @@ A personal portfolio website built for Web Scripting I. The site documents my jo
 
 ---
 
-## Word Guess Game — 
+## Habit Tracker — Final Project
 
-Built using HTML, CSS, and JAvascript with basic game logic and UI rendering. Functions kept separate with central state object driving updates to the board.
+Built using HTML, CSS, and JavaScript with full CRUD functionality and localStorage persistence. Logic separated into a data layer (habits.js) and UI layer (app.js) with a central render function driving all DOM updates.
 
-https://jmoore19023.github.io/JM-Web-Scripting-I/WordleGame.html
+https://jmoore19023.github.io/JM-Web-Scripting-I/Habit-Tracker/index.html
