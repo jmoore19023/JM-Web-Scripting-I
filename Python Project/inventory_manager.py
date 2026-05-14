@@ -150,3 +150,177 @@ def add_product(products, vendors):
 
     products.append(new_product)
     print(f"\n  Product '{name}' added successfully.")
+
+    
+def view_all_products(products):  # Loops through the products list and displays each product.
+
+    print("\n  --- All Products ---")
+ 
+    if len(products) == 0: # Check if list is empty before attempting to display.
+        print("  No products found.")
+        return
+ 
+    for product in products:
+        print("  " + "-" * 40)
+        product.display() # Calls display() method defined in Product class in models.py.
+ 
+    print("  " + "-" * 40)
+    print(f"  Total products: {len(products)}")
+ 
+ 
+def edit_product(products):
+ 
+    # edit_product() allows user to update fields on an existing product.
+    # Searches for product by ID, displays current values, then prompts for new ones.
+    # Takes one parameter: products list.
+    # Returns nothing, modifies the product object directly in the list.
+ 
+    print("\n  --- Edit Product ---")
+ 
+    product_id = input("  Enter product ID to edit: ").strip().upper()
+ 
+    # Search for the product in the list by ID.
+    target = None
+    for product in products:
+        if product.product_id == product_id:
+            target = product
+            break
+ 
+    if target == None: # If no match found, return to menu.
+        print("  Product not found. Returning to menu.")
+        return
+ 
+    # Display current values so user knows what they are changing.
+    print("\n  Current product details:")
+    target.display()
+ 
+    # Each field is optional to change. Pressing enter skips and keeps current value.
+    print("\n  Press enter to keep current value.")
+ 
+    name = input(f"  Name [{target.name}]: ").strip()
+    if name != "":
+        target.name = name
+ 
+    category = input(f"  Category [{target.category}]: ").strip()
+    if category != "":
+        target.category = category
+ 
+    # Quantity validation - must be a whole number and not negative.
+    quantity_input = input(f"  Quantity [{target.quantity}]: ").strip()
+    if quantity_input != "":
+        while True:
+            try:
+                quantity = int(quantity_input)
+                if quantity < 0:
+                    print("  Quantity cannot be negative. Please try again.")
+                    quantity_input = input(f"  Quantity [{target.quantity}]: ").strip()
+                else:
+                    target.quantity = quantity
+                    break
+            except ValueError:
+                print("  Please enter a whole number.")
+                quantity_input = input(f"  Quantity [{target.quantity}]: ").strip()
+ 
+    # Reorder level validation - must be a whole number and not negative.
+    reorder_level_input = input(f"  Reorder Level [{target.reorder_level}]: ").strip()
+    if reorder_level_input != "":
+        while True:
+            try:
+                reorder_level = int(reorder_level_input)
+                if reorder_level < 0:
+                    print("  Reorder level cannot be negative. Please try again.")
+                    reorder_level_input = input(f"  Reorder Level [{target.reorder_level}]: ").strip()
+                else:
+                    target.reorder_level = reorder_level
+                    break
+            except ValueError:
+                print("  Please enter a whole number.")
+                reorder_level_input = input(f"  Reorder Level [{target.reorder_level}]: ").strip()
+ 
+    # Price validation - must be a number and not negative.
+    price_input = input(f"  Price [${target.price:.2f}]: ").strip()
+    if price_input != "":
+        while True:
+            try:
+                price = float(price_input)
+                if price < 0:
+                    print("  Price cannot be negative. Please try again.")
+                    price_input = input(f"  Price [${target.price:.2f}]: ").strip()
+                else:
+                    target.price = price
+                    break
+            except ValueError:
+                print("  Please enter a valid price (e.g. 2.99).")
+                price_input = input(f"  Price [${target.price:.2f}]: ").strip()
+ 
+    # Optional clearance date update.
+    update_clearance = input("  Update clearance info? (yes/no): ").strip().lower()
+    if update_clearance == "yes":
+        target.clearance_date = input("  Enter clearance date (YYYY-MM-DD): ").strip()
+        while True:
+            try:
+                target.clearance_price = float(input("  Enter clearance price: $"))
+                if target.clearance_price < 0:
+                    print("  Clearance price cannot be negative. Please try again.")
+                else:
+                    break
+            except ValueError:
+                print("  Please enter a valid price (e.g. 1.99).")
+ 
+    print(f"\n  Product '{target.name}' updated successfully.")
+ 
+ 
+def deactivate_product(products):
+ 
+    # deactivate_product() sets a products active status to False.
+    # We deactivate instead of delete to preserve purchase order history.
+    # Takes one parameter: products list.
+    # Returns nothing, modifies the active field on the product object directly.
+ 
+    print("\n  --- Deactivate Product ---")
+ 
+    product_id = input("  Enter product ID to deactivate: ").strip().upper()
+ 
+    # Search for the product by ID.
+    target = None
+    for product in products:
+        if product.product_id == product_id:
+            target = product
+            break
+ 
+    if target == None: # Product not found, return to menu.
+        print("  Product not found. Returning to menu.")
+        return
+ 
+    if target.active == False: # Check if already deactivated to prevent duplicate action.
+        print("  This product is already deactivated.")
+        return
+ 
+    target.active = False # Set active to False to deactivate the product.
+    print(f"\n  Product '{target.name}' has been deactivated.")
+ 
+ 
+def view_low_stock(products):
+ 
+    # view_low_stock() scans all products and displays any where quantity is at or below reorder level.
+    # Takes one parameter: products list.
+    # Returns nothing, prints all low stock products or message if none found.
+ 
+    print("\n  --- Low Stock Products ---")
+ 
+    low_stock = [] # Empty list to store products that are low on stock.
+ 
+    for product in products:
+        if product.quantity <= product.reorder_level: # Check if quantity is at or below reorder level.
+            low_stock.append(product)
+ 
+    if len(low_stock) == 0: # No low stock items found.
+        print("  All products are sufficiently stocked.")
+        return
+ 
+    for product in low_stock:
+        print("  " + "-" * 40)
+        product.display()
+ 
+    print("  " + "-" * 40)
+    print(f"  Total low stock items: {len(low_stock)}")
