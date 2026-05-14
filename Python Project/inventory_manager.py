@@ -152,10 +152,12 @@ def add_product(products, vendors):
     print(f"\n  Product '{name}' added successfully.")
 
     
-def view_all_products(products):  # Loops through the products list and displays each product.
+def view_all_products(products):  
+
+    # Loops through the products list and displays each product.
 
     print("\n  --- All Products ---")
- 
+    
     if len(products) == 0: # Check if list is empty before attempting to display.
         print("  No products found.")
         return
@@ -170,10 +172,7 @@ def view_all_products(products):  # Loops through the products list and displays
  
 def edit_product(products):
  
-    # edit_product() allows user to update fields on an existing product.
-    # Searches for product by ID, displays current values, then prompts for new ones.
-    # Takes one parameter: products list.
-    # Returns nothing, modifies the product object directly in the list.
+    # edit_product() allows user to update fields on an existing product. Searches for product by ID, displays current values, then prompts for new ones.
  
     print("\n  --- Edit Product ---")
  
@@ -272,11 +271,8 @@ def edit_product(products):
  
 def deactivate_product(products):
  
-    # deactivate_product() sets a products active status to False.
-    # We deactivate instead of delete to preserve purchase order history.
-    # Takes one parameter: products list.
-    # Returns nothing, modifies the active field on the product object directly.
- 
+    # deactivate_product() sets a products active status to False. Deactivate instead of delete to preserve purchase order history.
+
     print("\n  --- Deactivate Product ---")
  
     product_id = input("  Enter product ID to deactivate: ").strip().upper()
@@ -303,8 +299,6 @@ def deactivate_product(products):
 def view_low_stock(products):
  
     # view_low_stock() scans all products and displays any where quantity is at or below reorder level.
-    # Takes one parameter: products list.
-    # Returns nothing, prints all low stock products or message if none found.
  
     print("\n  --- Low Stock Products ---")
  
@@ -324,3 +318,155 @@ def view_low_stock(products):
  
     print("  " + "-" * 40)
     print(f"  Total low stock items: {len(low_stock)}")
+
+
+# Vendor functions that allow the user to add, view, edit, and search vendors.
+
+def add_vendor(vendors):
+ 
+    # add_vendor() walks the user through adding a new vendor to the system. Validates all input before creating the vendor to prevent bad data.
+ 
+    print("\n  --- Add New Vendor ---")
+ 
+    # Vendor ID must be unique. Checks for existing vendor ID before accepting it.
+ 
+    vendor_id = input("  Enter vendor ID (e.g. V001): ").strip().upper()
+ 
+    for vendor in vendors:
+        if vendor.vendor_id == vendor_id:
+            print("  A vendor with that ID already exists. Returning to menu.")
+            return
+ 
+    name = input("  Enter vendor business name: ").strip() # Validation to prevent empty vendor name.
+    if name == "":
+        print("  Vendor name cannot be empty. Returning to menu.")
+        return
+ 
+    contact_name = input("  Enter contact name: ").strip() # Validation to prevent empty contact name.
+    if contact_name == "":
+        print("  Contact name cannot be empty. Returning to menu.")
+        return
+ 
+    phone = input("  Enter phone number: ").strip() # Validation to prevent empty phone number.
+    if phone == "":
+        print("  Phone number cannot be empty. Returning to menu.")
+        return
+ 
+    email = input("  Enter email address: ").strip() # Validation to prevent empty email address.
+    if email == "":
+        print("  Email address cannot be empty. Returning to menu.")
+        return
+ 
+    address = input("  Enter city/state or address: ").strip() # Validation to prevent empty address.
+    if address == "":
+        print("  Address cannot be empty. Returning to menu.")
+        return
+ 
+    # Create the new Vendor object and add it to the list.
+ 
+    new_vendor = Vendor(
+        vendor_id=vendor_id,
+        name=name,
+        contact_name=contact_name,
+        phone=phone,
+        email=email,
+        address=address
+    )
+ 
+    vendors.append(new_vendor)
+    print(f"\n  Vendor '{name}' added successfully.")
+ 
+ 
+def view_all_vendors(vendors):
+ 
+    # view_all_vendors() loops through the vendors list and displays each vendor.
+ 
+    print("\n  --- All Vendors ---")
+ 
+    if len(vendors) == 0: # Check if list is empty before attempting to display.
+        print("  No vendors found.")
+        return
+ 
+    for vendor in vendors:
+        print("  " + "-" * 40)
+        vendor.display() # Calls display() method defined in Vendor class in models.py.
+ 
+    print("  " + "-" * 40)
+    print(f"  Total vendors: {len(vendors)}")
+ 
+ 
+def edit_vendor(vendors):
+ 
+    # edit_vendor() allows user to update fields on an existing vendor.
+    # Searches for vendor by ID, displays current values, then prompts for new ones.
+ 
+    print("\n  --- Edit Vendor ---")
+ 
+    vendor_id = input("  Enter vendor ID to edit: ").strip().upper()
+ 
+    # Search for the vendor in the list by ID.
+    target = None
+    for vendor in vendors:
+        if vendor.vendor_id == vendor_id:
+            target = vendor
+            break
+ 
+    if target == None: # If no match found, return to menu.
+        print("  Vendor not found. Returning to menu.")
+        return
+ 
+    # Display current values so user knows what they are changing.
+    print("\n  Current vendor details:")
+    target.display()
+ 
+    # Each field is optional to change. Pressing enter skips and keeps current value.
+    print("\n  Press enter to keep current value.")
+ 
+    name = input(f"  Business Name [{target.name}]: ").strip()
+    if name != "":
+        target.name = name
+ 
+    contact_name = input(f"  Contact Name [{target.contact_name}]: ").strip()
+    if contact_name != "":
+        target.contact_name = contact_name
+ 
+    phone = input(f"  Phone [{target.phone}]: ").strip()
+    if phone != "":
+        target.phone = phone
+ 
+    email = input(f"  Email [{target.email}]: ").strip()
+    if email != "":
+        target.email = email
+ 
+    address = input(f"  Address [{target.address}]: ").strip()
+    if address != "":
+        target.address = address
+ 
+    print(f"\n  Vendor '{target.name}' updated successfully.")
+ 
+ 
+def search_vendors(vendors):
+ 
+    # search_vendors() searches the vendors list by name or ID and displays matches.
+
+    print("\n  --- Search Vendors ---")
+ 
+    search_term = input("  Enter vendor name or ID to search: ").strip().upper()
+ 
+    results = [] # Empty list to store matching vendors.
+ 
+    for vendor in vendors:
+        # Check if search term matches vendor ID or appears in vendor name.
+        if vendor.vendor_id == search_term or search_term in vendor.name.upper():
+            results.append(vendor)
+ 
+    if len(results) == 0: # No matching vendors found.
+        print("  No vendors found matching that search.")
+        return
+ 
+    for vendor in results:
+        print("  " + "-" * 40)
+        vendor.display()
+ 
+    print("  " + "-" * 40)
+    print(f"  {len(results)} vendor(s) found.")
