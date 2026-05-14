@@ -318,6 +318,30 @@ def view_low_stock(products):
     print("  " + "-" * 40)
     print(f"  Total low stock items: {len(low_stock)}")
 
+def view_inactive_products(products):
+
+    # view_inactive_products() displays all products that have been deactivated.
+    # Separated from active inventory to keep the main product list clean and relevant.
+
+    print("\n  --- Inactive Products ---")
+
+    inactive = [] # Empty list to store inactive products.
+
+    for product in products:
+        if product.active == False: # Only collect deactivated products.
+            inactive.append(product)
+
+    if len(inactive) == 0:
+        print("  No inactive products found.")
+        return
+
+    for product in inactive:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  Total inactive products: {len(inactive)}")
+
 
 # Vendor section contains all functions that allow the user to add, view, edit, and search vendors.
 # Vendor functions follow a similar pattern to product functions with input validation and searching by vendor IDs.
@@ -585,3 +609,77 @@ def search_by_vendor(products):
 
     print("  " + "-" * 40)
     print(f"  {len(results)} product(s) found.")
+
+# Sort section below contains functions for sorting products by different fields.
+# Helper functions are used to tell sorted() which field to compare on each product object.
+
+def get_name(product): # Function that sorted() uses to compare product names when sorting by name.
+    
+    return product.name
+
+def get_quantity(product): # Function that sorted() uses to compare product quantities when sorting by quantity.
+
+    return product.quantity
+
+def get_price(product): # Function that sorted() uses to compare product prices when sorting by price.
+
+    return product.price
+
+def sort_by_name(products):
+
+    # sort_by_name() sorts the products list alphabetically by product name A to Z.
+
+    print("\n  --- Products Sorted by Name ---")
+
+    if len(products) == 0: 
+        print("  No products found.")
+        return
+
+    sorted_list = sorted(products, key=get_name) # Create sorted copy using get_name() as the key.
+
+    for product in sorted_list:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  Total products: {len(sorted_list)}")
+
+
+def sort_by_quantity(products):
+
+    # sort_by_quantity() sorts the products list from in ascending order by quantity in stock.
+
+    print("\n  --- Products Sorted by Quantity ---")
+
+    if len(products) == 0: 
+        print("  No products found.")
+        return
+
+    sorted_list = sorted(products, key=get_quantity) # Create sorted copy using get_quantity() as the key.
+
+    for product in sorted_list:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  Total products: {len(sorted_list)}")
+
+
+def sort_by_price(products):
+
+    # sort_by_price() sorts the products list in ascending order by unit price.
+
+    print("\n  --- Products Sorted by Price ---")
+
+    if len(products) == 0:
+        print("  No products found.")
+        return
+
+    sorted_list = sorted(products, key=get_price) # Create sorted copy using get_price() as the key.
+
+    for product in sorted_list:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  Total products: {len(sorted_list)}")
