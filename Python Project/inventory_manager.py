@@ -18,8 +18,7 @@ from datetime import date
 # Python module used to automatically implement dates for orders and shipments.
 
 
-
-# Section contains all functions for managing products in the inventory.
+# Product section contains all functions for managing products in the inventory.
 # Functions here allow the user to add, view, edit, deactivate, and check stock levels for products.
 
 def add_product(products, vendors):
@@ -308,7 +307,7 @@ def view_low_stock(products):
         if product.quantity <= product.reorder_level: # Check if quantity is at or below reorder level.
             low_stock.append(product)
  
-    if len(low_stock) == 0: # No low stock items found.
+    if len(low_stock) == 0: 
         print("  All products are sufficiently stocked.")
         return
  
@@ -320,7 +319,8 @@ def view_low_stock(products):
     print(f"  Total low stock items: {len(low_stock)}")
 
 
-# Vendor functions that allow the user to add, view, edit, and search vendors.
+# Vendor section contains all functions that allow the user to add, view, edit, and search vendors.
+# Vendor functions follow a similar pattern to product functions with input validation and searching by vendor IDs.
 
 def add_vendor(vendors):
  
@@ -470,3 +470,118 @@ def search_vendors(vendors):
  
     print("  " + "-" * 40)
     print(f"  {len(results)} vendor(s) found.")
+
+# Search section contains functions for searching products and vendors by different fields. 
+# Each search function follows the same pattern by looping, matching, collecting, and then displaying the results.
+
+ 
+def search_by_product_id(products):
+ 
+    # search_by_product_id() searches the products list for an exact match on product ID.
+    # Exact match used because product IDs are unique identifiers.
+    # Takes one parameter: products list.
+    # Returns nothing, prints matching product or message if not found.
+ 
+    print("\n  --- Search by Product ID ---")
+ 
+    search_term = input("  Enter product ID to search: ").strip().upper()
+ 
+    results = [] # Empty list to store matching products.
+ 
+    for product in products:
+        if product.product_id == search_term: # Exact match on product ID.
+            results.append(product)
+ 
+    if len(results) == 0: # No matching products found.
+        print("  No products found matching that ID.")
+        return
+ 
+    for product in results:
+        print("  " + "-" * 40)
+        product.display()
+ 
+    print("  " + "-" * 40)
+    print(f"  {len(results)} product(s) found.")
+ 
+ 
+def search_by_name(products):
+ 
+    # search_by_name() searches the products list for a partial match on product name.
+    # Partial match used so user can search part of a name and still find results.
+    # Takes one parameter: products list.
+    # Returns nothing, prints all matching products or message if none found.
+ 
+    print("\n  --- Search by Product Name ---")
+ 
+    search_term = input("  Enter product name to search: ").strip().upper()
+ 
+    results = [] # Empty list to store matching products.
+ 
+    for product in products:
+        if search_term in product.name.upper(): # Partial match on product name.
+            results.append(product)
+ 
+    if len(results) == 0: # No matching products found.
+        print("  No products found matching that name.")
+        return
+ 
+    for product in results:
+        print("  " + "-" * 40)
+        product.display()
+ 
+    print("  " + "-" * 40)
+    print(f"  {len(results)} product(s) found.")
+ 
+def search_by_category(products):
+
+    # search_by_category() searches the products list for a partial match on category.
+    # Partial match used so user can search part of a category name and find all related products.
+
+    print("\n  --- Search by Category ---")
+
+    search_term = input("  Enter category to search: ").strip().upper()
+
+    results = [] # Empty list to store matching products.
+
+    for product in products:
+        if search_term in product.category.upper(): # Partial match on category.
+            results.append(product)
+
+    if len(results) == 0: # No matching products found.
+        print("  No products found in that category.")
+        return
+
+    for product in results:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  {len(results)} product(s) found.")
+
+
+def search_by_vendor(products):
+
+    # search_by_vendor() searches the products list for an exact match on vendor ID.
+    # Exact match used because vendor IDs are unique identifiers.
+    # One to many relationship means multiple products can share the same vendor ID.
+
+    print("\n  --- Search by Vendor ID ---")
+
+    search_term = input("  Enter vendor ID to search: ").strip().upper()
+
+    results = [] # Empty list to store matching products.
+
+    for product in products:
+        if product.vendor_id == search_term: # Exact match on vendor ID and adds to product list.
+            results.append(product)
+
+    if len(results) == 0: 
+        print("  No products found for that vendor.")
+        return
+
+    for product in results:
+        print("  " + "-" * 40)
+        product.display()
+
+    print("  " + "-" * 40)
+    print(f"  {len(results)} product(s) found.")
