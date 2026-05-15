@@ -1,0 +1,254 @@
+{
+    "products": [
+        {
+            "product_id": "SD001",
+            "name": "Tomato Seeds",
+            "category": "Seeds",
+            "quantity": 150,
+            "reorder_level": 30,
+            "reorder_quantity": 100,
+            "price": 2.99,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "SD002",
+            "name": "Sunflower Seeds",
+            "category": "Seeds",
+            "quantity": 20,
+            "reorder_level": 30,
+            "reorder_quantity": 100,
+            "price": 2.49,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PL001",
+            "name": "Aloe Vera",
+            "category": "Plants",
+            "quantity": 45,
+            "reorder_level": 10,
+            "reorder_quantity": 30,
+            "price": 8.99,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PL002",
+            "name": "Christmas Cactus",
+            "category": "Plants",
+            "quantity": 8,
+            "reorder_level": 10,
+            "reorder_quantity": 20,
+            "price": 9.99,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": "2026-01-15",
+            "clearance_price": 4.99
+        },
+        {
+            "product_id": "TL001",
+            "name": "Garden Trowel",
+            "category": "Tools",
+            "quantity": 75,
+            "reorder_level": 15,
+            "reorder_quantity": 50,
+            "price": 12.99,
+            "vendor_id": "V002",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "TL002",
+            "name": "Pruning Shears",
+            "category": "Tools",
+            "quantity": 60,
+            "reorder_level": 15,
+            "reorder_quantity": 40,
+            "price": 18.99,
+            "vendor_id": "V002",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "SL001",
+            "name": "Potting Mix",
+            "category": "Soil",
+            "quantity": 80,
+            "reorder_level": 20,
+            "reorder_quantity": 60,
+            "price": 9.99,
+            "vendor_id": "V003",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "SL002",
+            "name": "Compost",
+            "category": "Soil",
+            "quantity": 55,
+            "reorder_level": 15,
+            "reorder_quantity": 50,
+            "price": 11.99,
+            "vendor_id": "V003",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PP001",
+            "name": "Terracotta Pot",
+            "category": "Pots & Planters",
+            "quantity": 85,
+            "reorder_level": 20,
+            "reorder_quantity": 50,
+            "price": 6.99,
+            "vendor_id": "V004",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PP002",
+            "name": "Hanging Basket",
+            "category": "Pots & Planters",
+            "quantity": 60,
+            "reorder_level": 15,
+            "reorder_quantity": 40,
+            "price": 9.99,
+            "vendor_id": "V004",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        }
+    ],
+    "vendors": [
+        {
+            "vendor_id": "V001",
+            "name": "Green Valley Seeds Co",
+            "contact_name": "Sarah Green",
+            "phone": "555-101-2020",
+            "email": "sarah@greenvalley.com",
+            "address": "Portland, OR"
+        },
+        {
+            "vendor_id": "V002",
+            "name": "ProGarden Tools Ltd",
+            "contact_name": "Mike Torres",
+            "phone": "555-202-3030",
+            "email": "mike@progardentools.com",
+            "address": "Denver, CO"
+        },
+        {
+            "vendor_id": "V003",
+            "name": "Earth and Soil Supply",
+            "contact_name": "Linda Chen",
+            "phone": "555-303-4040",
+            "email": "linda@earthsoil.com",
+            "address": "Austin, TX"
+        },
+        {
+            "vendor_id": "V004",
+            "name": "Terra Pots and Planters",
+            "contact_name": "James Rivera",
+            "phone": "555-606-7070",
+            "email": "james@terrapots.com",
+            "address": "Chicago, IL"
+        }
+    ],
+    "purchase_orders": [
+        {
+            "po_number": "PO1",
+            "vendor_id": "V001",
+            "date_created": "2026-01-10",
+            "status": "Received",
+            "items": [
+                {
+                    "product_id": "SD001",
+                    "product_name": "Tomato Seeds",
+                    "quantity": 100,
+                    "unit_price": 2.99
+                },
+                {
+                    "product_id": "SD002",
+                    "product_name": "Sunflower Seeds",
+                    "quantity": 100,
+                    "unit_price": 2.49
+                }
+            ],
+            "total_cost": 548.00
+        },
+        {
+            "po_number": "PO2",
+            "vendor_id": "V002",
+            "date_created": "2026-01-15",
+            "status": "Received",
+            "items": [
+                {
+                    "product_id": "TL001",
+                    "product_name": "Garden Trowel",
+                    "quantity": 50,
+                    "unit_price": 12.99
+                },
+                {
+                    "product_id": "TL002",
+                    "product_name": "Pruning Shears",
+                    "quantity": 40,
+                    "unit_price": 18.99
+                }
+            ],
+            "total_cost": 1409.10
+        },
+        {
+            "po_number": "PO3",
+            "vendor_id": "V003",
+            "date_created": "2026-03-01",
+            "status": "Open",
+            "items": [
+                {
+                    "product_id": "SL001",
+                    "product_name": "Potting Mix",
+                    "quantity": 60,
+                    "unit_price": 9.99
+                },
+                {
+                    "product_id": "SL002",
+                    "product_name": "Compost",
+                    "quantity": 50,
+                    "unit_price": 11.99
+                }
+            ],
+            "total_cost": 1193.90
+        },
+        {
+            "po_number": "PO4",
+            "vendor_id": "V001",
+            "date_created": "2026-04-01",
+            "status": "Open",
+            "items": [
+                {
+                    "product_id": "PL001",
+                    "product_name": "Aloe Vera",
+                    "quantity": 30,
+                    "unit_price": 8.99
+                },
+                {
+                    "product_id": "PL002",
+                    "product_name": "Christmas Cactus",
+                    "quantity": 20,
+                    "unit_price": 9.99
+                }
+            ],
+            "total_cost": 469.50
+        }
+    ]
+}
