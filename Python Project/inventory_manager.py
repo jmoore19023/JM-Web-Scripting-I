@@ -683,3 +683,247 @@ def sort_by_price(products):
 
     print("  " + "-" * 40)
     print(f"  Total products: {len(sorted_list)}")
+
+# Purchase Order section contains functions for creating and viewing purchase orders.
+# Purchase orders connect vendors and products together into a single transaction record.
+# This section is what creates associations between all the different parts of the program.
+
+def create_purchase_order(products, vendors, purchase_orders):
+
+    # create_purchase_order() walks user through building a purchase order with a vendor and products.
+    # Takes three parameters: products list, vendors list, and purchase_orders list. (Essentially the rest of program)
+
+    print("\n  --- Create Purchase Order ---")
+
+    # Generate unique PO number based on how many orders already exist.
+    next_number = len(purchase_orders) + 1
+    po_number = "PO" + str(next_number)
+
+    # Ask for vendor ID and validate it exists in the vendors list.
+    vendor_id = input("  Enter vendor ID: ").strip().upper()
+
+    target_vendor = None # Search for vendor by ID.
+    for vendor in vendors:
+        if vendor.vendor_id == vendor_id:
+            target_vendor = vendor
+            break
+
+    if target_vendor == None:
+        print("  Vendor not found. Please add the vendor first. Returning to menu.")
+        return
+
+    print(f"  Vendor: {target_vendor.name}") # Confirm vendor name to user.
+
+    # Display all active products for reference before user starts adding items.
+    print("\n  Available Products:")
+    print("  " + "-" * 40)
+    for product in products:
+        if product.active == True: # Only show active products.
+            print(f"  {product.product_id} - {product.name} - ${product.price:.2f}")
+    print("  " + "-" * 40)
+
+    items = [] # Empty list to store items added to this order.
+    total_cost = 0 # Running total updated as each item is added.
+
+    # Loop allows user to keep adding products until they are done.
+    while True:
+
+        product_id = input("\n  Enter product ID to add to order: ").strip().upper()
+
+        # Search for the product in the products list.
+        target_product = None
+        for product in products:
+            if product.product_id == product_id:
+                target_product = product
+                break
+
+        if target_product == None:
+            print("  Product not found. Please try again.")
+            continue
+
+        if target_product.active == False:
+            print("  This product is inactive and cannot be ordered.")
+            continue
+
+        # Quantity validation - must be a whole number greater than zero.
+        while True:
+            try:
+                quantity = int(input("  Enter quantity to order: "))
+                if quantity <= 0:
+                    print("  Quantity must be greater than zero. Please try again.")
+                else:
+                    break
+            except ValueError:
+                print("  Please enter a whole number.")
+
+        # Calculate line total and update running total.
+        line_total = quantity * target_product.price
+        total_cost = total_cost + line_total
+
+        # Build item dictionary and add to items list.
+        item = {
+            "product_id": target_product.product_id,
+            "product_name": target_product.name,
+            "quantity": quantity,
+            "unit_price": target_product.price
+        }
+        items.append(item)
+
+        print(f"  Added: {target_product.name} x{quantity} @ ${target_product.price:.2f} each")
+        print(f"  Running total: ${total_cost:.2f}")
+
+        # Ask if user wants to add another product or finish the order.
+        another = input("\n  Add another product? (yes/no): ").strip().lower()
+        if another != "yes":
+            break
+
+    # Check that at least one item was added before continuing.
+    if len(items) == 0:
+        print("  No items were added. Purchase order cancelled.")
+        return
+
+    # Show full order summary for user to review before confirming.
+    print("\n  --- Order Summary ---")
+    print(f"  PO Number : {po_number}")
+    print(f"  Vendor    : {target_vendor.name}")
+    print(f"  Items     :")
+    for item in items:
+        line = item["quantity"] * item["unit_price"]
+        print(f"    - {item['product_name']} x{item['quantity']} @ ${item['unit_price']:.2f} = ${line:.2f}")
+    print(f"  Total     : ${total_cost:.2f}")
+    print("  " + "-" * 40)
+
+    # Ask user to confirm before creating the purchase order.
+    confirm = input("  Confirm order? (yes/no): ").strip().lower()
+    if confirm != "yes":
+        print("  Purchase order cancelled. Returning to menu.")
+        return
+
+    # Stamp todays date automatically using the date module imported at the top.
+    date_created = str(date.today())
+
+    # Create the PurchaseOrder object and add it to the list.
+    new_order = PurchaseOrder(
+        po_number=po_number,
+        vendor_id=vendor_id,
+        date_created=date_created,
+        items=items,
+        total_cost=total_cost,
+        status="Open"
+    )
+
+    purchase_orders.append(new_order)
+    print(f"\n  Purchase Order {po_number} created successfully.")
+    print(f"  Vendor: {target_vendor.name}")
+    print(f"  Items : {len(items)}")
+    print(f"  Total : ${total_cost:.2f}")
+
+def view_purchase_orders(purchase_orders):
+
+    # view_purchase_orders() displays purchase orders filtered by status.
+    # Allows user to view open orders, received orders, or all orders.
+
+    print("\n  --- View Purchase Orders ---")
+
+    if len(purchase_orders) == 0:
+        print("  No purchase orders found.")
+        return
+
+    # Ask user which orders they want to see.
+    print("  Filter by status:")
+    print("    1. Open orders only")
+    print("    2. Received orders only")
+    print("    3. All orders")
+
+    choice = input("\n  Enter choice: ").strip()
+
+    results = [] # Empty list to store matching orders.
+
+    for order in purchase_orders:
+        if choice == "1" and order.status == "Open": # Filter for open orders only.
+            results.append(order)
+        elif choice == "2" and order.status == "Received": # Filter for received orders only.
+            results.append(order)
+        elif choice == "3": # No filter, add all orders.
+            results.append(order)
+
+    if len(results) == 0:
+        print("  No orders found matching that filter.")
+        return
+
+    for order in results:
+        print("  " + "-" * 40)
+        order.display() # Calls display() method defined in PurchaseOrder class in models.py.
+
+    print("  " + "-" * 40)
+    print(f"  {len(results)} order(s) found.")
+
+
+def receive_shipment(products, purchase_orders):
+
+    # receive_shipment() processes an incoming shipment for an open purchase order.
+    # Finds the matching PO, updates inventory quantities for each item ordered and marks the order as received to prevent duplicate receiving.
+
+    print("\n  --- Receive Shipment ---")
+
+    # Show all open orders for reference so user knows what PO numbers are available.
+    print("\n  Open Purchase Orders:")
+    print("  " + "-" * 40)
+
+    open_orders = [] # Collect open orders to display and check against.
+    for order in purchase_orders:
+        if order.status == "Open":
+            open_orders.append(order)
+            print(f"  {order.po_number} - {order.vendor_id} - {order.date_created} - ${order.total_cost:.2f}")
+
+    if len(open_orders) == 0:
+        print("  No open purchase orders found.")
+        return
+
+    print("  " + "-" * 40)
+
+    # Ask for PO number to receive.
+    po_number = input("\n  Enter PO number to receive: ").strip().upper()
+
+    # Search for the purchase order by PO number.
+    target_order = None
+    for order in purchase_orders:
+        if order.po_number == po_number:
+            target_order = order
+            break
+
+    if target_order == None:
+        print("  Purchase order not found. Returning to menu.")
+        return
+
+    # Check if order has already been received to prevent duplicate receiving.
+    if target_order.status == "Received":
+        print("  This order has already been received. Returning to menu.")
+        return
+
+    # Show order details so user can confirm before updating inventory.
+    print("\n  Order details:")
+    target_order.display()
+
+    # Ask user to confirm before updating inventory.
+    confirm = input("\n  Confirm receiving this shipment? (yes/no): ").strip().lower()
+    if confirm != "yes":
+        print("  Receiving cancelled. Returning to menu.")
+        return
+
+    # Loop through each item in the order and update matching product quantity.
+    # Two loops needed - outer loop goes through order items,
+    # inner loop searches products list to find the matching product.
+
+    for item in target_order.items:
+        for product in products:
+            if product.product_id == item["product_id"]: # Match found, update quantity.
+                product.quantity = product.quantity + item["quantity"]
+                print(f"  Updated: {product.name} - new quantity: {product.quantity}")
+                break
+
+    # Mark order as received to prevent it from being received again.
+    target_order.status = "Received"
+
+    print(f"\n  Shipment for {target_order.po_number} received successfully.")
+    print(f"  {len(target_order.items)} product(s) updated in inventory.")
