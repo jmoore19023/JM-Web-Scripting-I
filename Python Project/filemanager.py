@@ -27,7 +27,7 @@ from models import Product, Vendor, PurchaseOrder
 # Use the from_dict() to convert loaded data back into usable objects.
 
 
-DATA_FILE = "data.json"
+DATA_FILE = "store_data.json"
 # Constant variable for the name of JSON file where all data is stored. 
 # Storing in variable allows it to be changed throughout entire file in one change.
 
