@@ -41,7 +41,7 @@ class Product:
         # display() prints a readable summary of this product to the screen.
         # Added a condition to check if product is on clearance for items past their clearance date.
         # Parameters: none beyond self
-        # Returns: nothing
+        # Returns: Nothing.
       
         if self.active == True: #Conditional statement assigning active/discontinued status of product.
             status = "Active"
@@ -91,7 +91,7 @@ class Product:
         
         # Class method that creates a product from a dictionary. Opposite of to_dict() method.
         # Method used to convert data from JSON file into product object that can be used in the program.
-        # Parameters: data - a dictionary loaded from JSON file
+        # Parameters: data. Dictionary loaded from JSON file
         # Returns: a new Product object with all fields populated from the dictionary
 
         return cls(
@@ -128,7 +128,7 @@ class Vendor:
 
         # display() prints a readable summary of this vendor to the screen.
         # Parameters: none beyond self
-        # Returns: nothing, prints vendor details to screen
+        # Returns: Nothing.  Prints vendor details to screen
 
         print(f"  Vendor ID    : {self.vendor_id}")
         print(f"  Name         : {self.name}")
@@ -157,8 +157,8 @@ class Vendor:
 
         # from_dict() creates a new Vendor object from a dictionary loaded from JSON.
         # Opposite of to_dict() function. Converts saved data back into a usable object.
-        # Parameters: data - a dictionary loaded from JSON file
-        # Returns: a new Vendor object with all fields populated from the dictionary
+        # Parameters: data ; Dictionary loaded from JSON file
+        # Returns: a new vendor object with all dictionary fields populated
 
         return cls(
             vendor_id=data["vendor_id"],
@@ -194,7 +194,7 @@ class PurchaseOrder:
 
         # display() prints a readable summary of this purchase order to the screen.
         # Parameters: none beyond self
-        # Returns: nothing, prints purchase order details and all items to screen
+        # Returns: Nothing. Prints purchase order details and all items to screen
 
         print(f"  PO Number    : {self.po_number}")
         print(f"  Vendor ID    : {self.vendor_id}")
