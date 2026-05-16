@@ -3,7 +3,7 @@
 #
 # Moore Plants and Pots - Inventory and Purchase Order System
 # Created by: John Moore
-# Created on: 2024-05-11
+# Created on: 2025-05-11
 #
 # PURPOSE:
 # Started with model file due to every other part of this program hinging off it. 
@@ -16,8 +16,8 @@
 
 class Product: 
 
-    # Product class created to represent a single product. This class is the corenerstone to creating product objects and storing product information in inventory.
-    # Class contains methods to display product information and convert the product object to a dictionary for  storage and retrieval from JSON files.
+    # Product class created to represent a single product. This class is the cornerstone to creating product objects and storing product information in inventory.
+    # Class contains methods to display product information and convert the product object to a dictionary for storage and retrieval from JSON files.
     # The Product class includes several attributes which are listed in the __init__ code section below. 
 
     def __init__(self, product_id, name, category, quantity, reorder_level,
@@ -38,9 +38,10 @@ class Product:
 
     def display(self):
 
-        # Simple display function that prints summary of a product. 
-        # Added a condition to check if product is on clearance for items that are past their clearance date
         # display() prints a readable summary of this product to the screen.
+        # Added a condition to check if product is on clearance for items past their clearance date.
+        # Parameters: none beyond self
+        # Returns: nothing
       
         if self.active == True: #Conditional statement assigning active/discontinued status of product.
             status = "Active"
@@ -67,6 +68,8 @@ class Product:
 
         # to dict() is a method used to convert product objects into a dictionary format. 
         # Necessary for saviing products to a JSON file and returns the values as key:value pairs.
+        # Parameters: none beyond self
+        # Returns: dictionary containing all product fields as key:value pairs
 
         return {
             "product_id": self.product_id,
@@ -88,6 +91,8 @@ class Product:
         
         # Class method that creates a product from a dictionary. Opposite of to_dict() method.
         # Method used to convert data from JSON file into product object that can be used in the program.
+        # Parameters: data - a dictionary loaded from JSON file
+        # Returns: a new Product object with all fields populated from the dictionary
 
         return cls(
             product_id=data["product_id"],
@@ -112,14 +117,19 @@ class Vendor:
 
     def __init__(self, vendor_id, name, contact_name, phone, email, address):
 
-        self.vendor_id = vendor_id        # Unique ID, e.g. "V001"
-        self.name = name                  # Business name, e.g. "Green Thumb Wholesale"
-        self.contact_name = contact_name  # Person we contact at this vendor
-        self.phone = phone                # Their phone number
-        self.email = email                # Their email address
-        self.address = address            # Their city/state or full address
+        self.vendor_id = vendor_id        # Unique ID, IE: "V001"
+        self.name = name                  # Business name
+        self.contact_name = contact_name  # Point of Contact
+        self.phone = phone                # Phone Number
+        self.email = email                # Email
+        self.address = address            # Full Address
 
     def display(self):
+
+        # display() prints a readable summary of this vendor to the screen.
+        # Parameters: none beyond self
+        # Returns: nothing, prints vendor details to screen
+
         print(f"  Vendor ID    : {self.vendor_id}")
         print(f"  Name         : {self.name}")
         print(f"  Contact      : {self.contact_name}")
@@ -128,6 +138,11 @@ class Vendor:
         print(f"  Address      : {self.address}")
 
     def to_dict(self):
+
+        # to_dict() converts this vendor object to a dictionary for saving to JSON.
+        # Parameters: none beyond self
+        # Returns: dictionary containing all vendor fields as key:value pairs
+
         return {
             "vendor_id": self.vendor_id,
             "name": self.name,
@@ -139,6 +154,12 @@ class Vendor:
 
     @classmethod
     def from_dict(cls, data):
+
+        # from_dict() creates a new Vendor object from a dictionary loaded from JSON.
+        # Opposite of to_dict() function. Converts saved data back into a usable object.
+        # Parameters: data - a dictionary loaded from JSON file
+        # Returns: a new Vendor object with all fields populated from the dictionary
+
         return cls(
             vendor_id=data["vendor_id"],
             name=data["name"],
@@ -170,6 +191,11 @@ class PurchaseOrder:
         self.status = status              # "Open" or "Received"
 
     def display(self):
+
+        # display() prints a readable summary of this purchase order to the screen.
+        # Parameters: none beyond self
+        # Returns: nothing, prints purchase order details and all items to screen
+
         print(f"  PO Number    : {self.po_number}")
         print(f"  Vendor ID    : {self.vendor_id}")
         print(f"  Date Created : {self.date_created}")
@@ -187,6 +213,11 @@ class PurchaseOrder:
     # to_dict() and from_dict() used for same reason as other classes. converts this purchase order to a dictionary for saving.
 
     def to_dict(self):
+
+        # to_dict() converts this purchase order object to a dictionary for saving to JSON.
+        # Parameters: none beyond self
+        # Returns: dictionary containing all purchase order fields as key:value pairs
+
         return {
             "po_number": self.po_number,
             "vendor_id": self.vendor_id,
@@ -198,6 +229,12 @@ class PurchaseOrder:
 
     @classmethod
     def from_dict(cls, data):
+
+        # from_dict() creates a new PurchaseOrder object from a dictionary loaded from JSON.
+        # Opposite of to_dict() - converts saved data back into a usable object.
+        # Parameters: data - a dictionary loaded from JSON file
+        # Returns: a new PurchaseOrder object with all fields populated from the dictionary
+
         return cls(
             po_number=data["po_number"],
             vendor_id=data["vendor_id"],
