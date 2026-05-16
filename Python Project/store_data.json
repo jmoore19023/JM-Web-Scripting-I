@@ -170,7 +170,6 @@
             "po_number": "PO1",
             "vendor_id": "V001",
             "date_created": "2026-01-10",
-            "status": "Received",
             "items": [
                 {
                     "product_id": "SD001",
@@ -185,13 +184,13 @@
                     "unit_price": 2.49
                 }
             ],
-            "total_cost": 548.00
+            "total_cost": 548.0,
+            "status": "Received"
         },
         {
             "po_number": "PO2",
             "vendor_id": "V002",
             "date_created": "2026-01-15",
-            "status": "Received",
             "items": [
                 {
                     "product_id": "TL001",
@@ -206,13 +205,13 @@
                     "unit_price": 18.99
                 }
             ],
-            "total_cost": 1409.10
+            "total_cost": 1409.1,
+            "status": "Received"
         },
         {
             "po_number": "PO3",
             "vendor_id": "V003",
             "date_created": "2026-03-01",
-            "status": "Open",
             "items": [
                 {
                     "product_id": "SL001",
@@ -227,13 +226,13 @@
                     "unit_price": 11.99
                 }
             ],
-            "total_cost": 1193.90
+            "total_cost": 1193.9,
+            "status": "Open"
         },
         {
             "po_number": "PO4",
             "vendor_id": "V001",
             "date_created": "2026-04-01",
-            "status": "Open",
             "items": [
                 {
                     "product_id": "PL001",
@@ -248,7 +247,8 @@
                     "unit_price": 9.99
                 }
             ],
-            "total_cost": 469.50
+            "total_cost": 469.5,
+            "status": "Open"
         }
     ]
 }
