@@ -21,6 +21,8 @@ from datetime import date
 def full_inventory_report(products):
 
     # full_inventory_report() displays all products in the system regardless of status.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Full Inventory Report ---")
 
@@ -39,6 +41,8 @@ def full_inventory_report(products):
 def low_stock_report(products):
 
     # low_stock_report() displays all products where quantity is at or below reorder level.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Low Stock Report ---")
 
@@ -64,6 +68,8 @@ def inventory_value_report(products):
 
     # inventory_value_report() calculates and displays the total value of all stock.
     # Value is calculated by multiplying quantity by price for each product.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Inventory Value Report ---")
 
@@ -85,6 +91,8 @@ def inventory_value_report(products):
 def open_purchase_orders_report(purchase_orders):
 
     # open_purchase_orders_report() displays all purchase orders with Open status.
+    # Parameters: purchase_orders list
+    # Returns: nothing
 
     print("\n  --- Open Purchase Orders Report ---")
 
@@ -109,8 +117,8 @@ def open_purchase_orders_report(purchase_orders):
 def received_purchase_orders_report(purchase_orders):
 
     # received_purchase_orders_report() displays all purchase orders with Received status.
-    # Takes one parameter: purchase_orders list.
-    # Returns nothing, prints all received orders or message if none found.
+    # Parameters: purchase_orders list
+    # Returns: nothing
 
     print("\n  --- Received Purchase Orders Report ---")
 
@@ -136,8 +144,8 @@ def clearance_items_report(products):
 
     # clearance_items_report() displays all products that have a clearance date set.
     # Checks todays date against the clearance date to show if item is active or upcoming.
-    # Takes one parameter: products list.
-    # Returns nothing, prints all clearance items or message if none found.
+    # PArameters: products list.
+    # Returns: nothing
 
     print("\n  --- Clearance Items Report ---")
 
@@ -176,8 +184,8 @@ def restock_cost_estimator(products):
 
     # restock_cost_estimator() calculates the total cost to restock all low stock items.
     # For each low stock product, calculates cost based on reorder quantity and unit price.
-    # Takes one parameter: products list.
-    # Returns nothing, prints restock cost per product and grand total.
+    # Parameter: products list.
+    # Returns: nothing
 
     print("\n  --- Restock Cost Estimator ---")
 
