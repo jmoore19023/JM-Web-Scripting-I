@@ -45,6 +45,8 @@ from reports import (
 def product_menu(products, vendors):
 
     # product_menu() displays the product management submenu.
+    # Parameters: products list, vendors list
+    # Returns: Nothing. Loops until user selects back
 
     while True:
 
@@ -80,6 +82,8 @@ def product_menu(products, vendors):
 def vendor_menu(vendors):
 
     # vendor_menu() displays the vendor management submenu.
+    # Parameters: vendors list
+    # Returns: Nothing. Loops until user selects back
 
     while True:
 
@@ -109,6 +113,8 @@ def vendor_menu(vendors):
 def purchase_order_menu(products, vendors, purchase_orders):
 
     # purchase_order_menu() displays the purchase order submenu.
+    # Parameters: products list, vendors list, purchase_orders list
+    # Returns: nothing. Loops until user selects back
 
     while True:
 
@@ -135,6 +141,8 @@ def purchase_order_menu(products, vendors, purchase_orders):
 def search_menu(products):
 
     # search_menu() displays the product search submenu.
+    # Parameters: products list
+    # Returns: Nothing. Loops until user selects back
 
     while True:
 
@@ -164,6 +172,8 @@ def search_menu(products):
 def sort_menu(products):
 
     # sort_menu() displays the product sort submenu.
+    # Parameters: products list
+    # Returns: Nothing. Loops until user selects back
 
     while True:
 
@@ -190,6 +200,8 @@ def sort_menu(products):
 def reports_menu(products, purchase_orders):
 
     # reports_menu() displays the reports submenu.
+    # Parameters: products list, purchase_orders list
+    # Returns: Nothing. Loops until user selects back.
 
     while True:
 
@@ -234,7 +246,8 @@ def main():
 
     # main() is the entry point for the program.
     # Loads data on startup, runs the main menu loop, saves data on exit.
-
+    # Parameters: none
+    # Returns: Nothing. Runs until user saves and exits
 
     print("\n  ============================================")
     print("       Welcome to Moore Plants and Pots      ")
@@ -281,12 +294,5 @@ def main():
         else:
             print("  Invalid choice. Please enter a number from the menu.")
 
-
-# =============================================================================
-# PROGRAM ENTRY POINT
-# This is standard Python convention for running a program.
-# It means "only run main() if this file is being run directly."
-# =============================================================================
-
-if __name__ == "__main__":
-    main()
+# Starts the program.
+main()
