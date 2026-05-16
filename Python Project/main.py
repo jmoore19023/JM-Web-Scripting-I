@@ -251,7 +251,7 @@ def main():
 
     print("\n  ============================================")
     print("       Welcome to Moore Plants and Pots      ")
-    print("        Inventory and Purchase Order System  ")
+    print("      Inventory and Purchase Order System  ")
     print("  ============================================")
 
     # Load saved data on startup using initialize_data() from file_manager.py.
