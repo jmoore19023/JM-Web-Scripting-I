@@ -324,6 +324,19 @@
             "active": true,
             "clearance_date": null,
             "clearance_price": null
+        },
+        {
+            "product_id": "PL099",
+            "name": "Rosemary Plant",
+            "category": "Plants",
+            "quantity": 25,
+            "reorder_level": 10,
+            "reorder_quantity": 20,
+            "price": 6.99,
+            "vendor_id": "V005",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
         }
     ],
     "vendors": [
@@ -543,6 +556,27 @@
                 }
             ],
             "total_cost": 879.1,
+            "status": "Open"
+        },
+        {
+            "po_number": "PO9",
+            "vendor_id": "V005",
+            "date_created": "2026-05-16",
+            "items": [
+                {
+                    "product_id": "PL003",
+                    "product_name": "Jade Plant",
+                    "quantity": 15,
+                    "unit_price": 11.99
+                },
+                {
+                    "product_id": "SD001",
+                    "product_name": "Tomato Seeds",
+                    "quantity": 100,
+                    "unit_price": 2.99
+                }
+            ],
+            "total_cost": 478.85,
             "status": "Open"
         }
     ]
