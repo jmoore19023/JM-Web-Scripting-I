@@ -23,9 +23,10 @@ from datetime import date
 
 def add_product(products, vendors):
 
-
     # add_product() walks the user through adding a new product to inventory.
     # Validates all input before creating the product to prevent bad data.
+    # Parameters: products list and vendors list
+    # Returns: nothing
 
     print("\n  --- Add New Product ---")
 
@@ -38,8 +39,6 @@ def add_product(products, vendors):
             print("  A product with that ID already exists. Returning to menu.")
             return
 
-
-
     name = input("  Enter product name: ").strip() # Validation to prevent empty product name.
     if name == "":
         print("  Product name cannot be empty. Returning to menu.")
@@ -49,7 +48,6 @@ def add_product(products, vendors):
     if category == "":
         print("  Category cannot be empty. Returning to menu.")
         return
-
 
     while True: #Validation to ensure quantity is a valid value.
         try:
@@ -61,7 +59,6 @@ def add_product(products, vendors):
         except ValueError:
             print("  Please enter a whole number.")
 
-
     while True: #Validation to ensure reorder level is a valid value and not negative.
         try:
             reorder_level = int(input("  Enter reorder level: "))
@@ -72,7 +69,6 @@ def add_product(products, vendors):
         except ValueError:
             print("  Please enter a whole number.")
 
-
     while True: # Validation to ensure is greater than zero and whole number.
         try:
             reorder_quantity = int(input("  Enter reorder quantity: "))
@@ -82,7 +78,6 @@ def add_product(products, vendors):
                 break
         except ValueError:
             print("  Please enter a whole number.")
-
 
     while True: # Validation for numbers that are negative and non-numeric.
         try:
@@ -98,7 +93,6 @@ def add_product(products, vendors):
     # Get and validate vendor ID. Must match an existing vendor in the vendors list.
 
     vendor_id = input("  Enter vendor ID: ").strip().upper()
-
 
     vendor_found = False # Check that the vendor ID exists in our vendors list
     for vendor in vendors:
@@ -153,7 +147,9 @@ def add_product(products, vendors):
     
 def view_all_products(products):  
 
-    # Loops through the products list and displays each product.
+    # view_all_products() loops through the products list and displays each product.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- All Products ---")
     
@@ -172,6 +168,8 @@ def view_all_products(products):
 def edit_product(products):
  
     # edit_product() allows user to update fields on an existing product. Searches for product by ID, displays current values, then prompts for new ones.
+    # Parameters: products list
+    # Returns: nothing
  
     print("\n  --- Edit Product ---")
  
@@ -271,6 +269,8 @@ def edit_product(products):
 def deactivate_product(products):
  
     # deactivate_product() sets a products active status to False. Deactivate instead of delete to preserve purchase order history.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Deactivate Product ---")
  
@@ -298,6 +298,8 @@ def deactivate_product(products):
 def view_low_stock(products):
  
     # view_low_stock() scans all products and displays any where quantity is at or below reorder level.
+    # Parameters: products list
+    # Returns: nothing
  
     print("\n  --- Low Stock Products ---")
  
@@ -322,6 +324,8 @@ def view_inactive_products(products):
 
     # view_inactive_products() displays all products that have been deactivated.
     # Separated from active inventory to keep the main product list clean and relevant.
+    # Parameters: products lists
+    # Returns: nothing
 
     print("\n  --- Inactive Products ---")
 
@@ -349,6 +353,8 @@ def view_inactive_products(products):
 def add_vendor(vendors):
  
     # add_vendor() walks the user through adding a new vendor to the system. Validates all input before creating the vendor to prevent bad data.
+    # Parameters: vendors list
+    # Returns: nothing
  
     print("\n  --- Add New Vendor ---")
  
@@ -404,6 +410,8 @@ def add_vendor(vendors):
 def view_all_vendors(vendors):
  
     # view_all_vendors() loops through the vendors list and displays each vendor.
+    # Parameters: vendors list
+    # Returns: nothing
  
     print("\n  --- All Vendors ---")
  
@@ -423,6 +431,8 @@ def edit_vendor(vendors):
  
     # edit_vendor() allows user to update fields on an existing vendor.
     # Searches for vendor by ID, displays current values, then prompts for new ones.
+    # Parameters: vendors list
+    # Returns: nothing
  
     print("\n  --- Edit Vendor ---")
  
@@ -472,6 +482,8 @@ def edit_vendor(vendors):
 def search_vendors(vendors):
  
     # search_vendors() searches the vendors list by name or ID and displays matches.
+    # Parameters: vendors list
+    # Returns: nothing
 
     print("\n  --- Search Vendors ---")
  
@@ -503,8 +515,8 @@ def search_by_product_id(products):
  
     # search_by_product_id() searches the products list for an exact match on product ID.
     # Exact match used because product IDs are unique identifiers.
-    # Takes one parameter: products list.
-    # Returns nothing, prints matching product or message if not found.
+    # Parameters: products list
+    # Returns: nothing
  
     print("\n  --- Search by Product ID ---")
  
@@ -532,8 +544,8 @@ def search_by_name(products):
  
     # search_by_name() searches the products list for a partial match on product name.
     # Partial match used so user can search part of a name and still find results.
-    # Takes one parameter: products list.
-    # Returns nothing, prints all matching products or message if none found.
+    # Parameters: products list
+    # Returns: nothing
  
     print("\n  --- Search by Product Name ---")
  
@@ -560,6 +572,8 @@ def search_by_category(products):
 
     # search_by_category() searches the products list for a partial match on category.
     # Partial match used so user can search part of a category name and find all related products.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Search by Category ---")
 
@@ -588,6 +602,8 @@ def search_by_vendor(products):
     # search_by_vendor() searches the products list for an exact match on vendor ID.
     # Exact match used because vendor IDs are unique identifiers.
     # One to many relationship means multiple products can share the same vendor ID.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Search by Vendor ID ---")
 
@@ -614,20 +630,25 @@ def search_by_vendor(products):
 # Helper functions are used to tell sorted() which field to compare on each product object.
 
 def get_name(product): # Function that sorted() uses to compare product names when sorting by name.
-    
+    # Parameters: product object
+    # Returns: product name in string format
     return product.name
 
 def get_quantity(product): # Function that sorted() uses to compare product quantities when sorting by quantity.
-
+    # Parameters: product object
+    # Returns: product in integer format
     return product.quantity
 
 def get_price(product): # Function that sorted() uses to compare product prices when sorting by price.
-
+    # Parameters: product object
+    # Returns: product price in float decimal format
     return product.price
 
 def sort_by_name(products):
 
     # sort_by_name() sorts the products list alphabetically by product name A to Z.
+    # Parameters: products - list of Product objects
+    # Returns: nothing
 
     print("\n  --- Products Sorted by Name ---")
 
@@ -647,7 +668,9 @@ def sort_by_name(products):
 
 def sort_by_quantity(products):
 
-    # sort_by_quantity() sorts the products list from in ascending order by quantity in stock.
+    # sort_by_quantity() sorts the products list in ascending order by quantity in stock.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Products Sorted by Quantity ---")
 
@@ -668,6 +691,8 @@ def sort_by_quantity(products):
 def sort_by_price(products):
 
     # sort_by_price() sorts the products list in ascending order by unit price.
+    # Parameters: products list
+    # Returns: nothing
 
     print("\n  --- Products Sorted by Price ---")
 
@@ -692,6 +717,8 @@ def create_purchase_order(products, vendors, purchase_orders):
 
     # create_purchase_order() walks user through building a purchase order with a vendor and products.
     # Takes three parameters: products list, vendors list, and purchase_orders list. (Essentially the rest of program)
+    # Parameters: products list, vendors list, purchase_orders list
+    # Returns: nothing
 
     print("\n  --- Create Purchase Order ---")
 
@@ -822,6 +849,8 @@ def view_purchase_orders(purchase_orders):
 
     # view_purchase_orders() displays purchase orders filtered by status.
     # Allows user to view open orders, received orders, or all orders.
+    # Parameters: purchase_orders list
+    # Returns: nothing. Prints matching orders or message if none found
 
     print("\n  --- View Purchase Orders ---")
 
@@ -863,6 +892,8 @@ def receive_shipment(products, purchase_orders):
 
     # receive_shipment() processes an incoming shipment for an open purchase order.
     # Finds the matching PO, updates inventory quantities for each item ordered and marks the order as received to prevent duplicate receiving.
+    # Parameters:  products list and purchase_orders list
+    # Returns: none. Product quantities and PO status directly
 
     print("\n  --- Receive Shipment ---")
 
@@ -912,8 +943,8 @@ def receive_shipment(products, purchase_orders):
         return
 
     # Loop through each item in the order and update matching product quantity.
-    # Two loops needed - outer loop goes through order items,
-    # inner loop searches products list to find the matching product.
+    # Outer loop goes through order items,
+    # Inner loop searches products list to find the matching product.
 
     for item in target_order.items:
         for product in products:

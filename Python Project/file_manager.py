@@ -11,9 +11,7 @@
 # 
 #
 # This file acts as the memory of the program. It uses the to_dict() and
-# from_dict() methods defined in models.py to convert objects to and from
-# a format that can be stored in a JSON file.
-#
+# from_dict() methods defined in models.py to convert objects to and from a format that can be stored in a JSON file.
 # =============================================================================
 
 import json
@@ -36,8 +34,11 @@ def save_data(products, vendors, purchase_orders):
     # save_data() function takes all three lists of objects and writes them to the JSON file.
     # Function takes three parameters: products, vendors, and purchase_orders.
     # Objects are then converted to dictionaries and packaged into one combined dictionary before written to file.
+    # Parameters: products, vendors, purchase_orders.
+    # Returns: nothing
 
     # Objects here are converted to dictionaries using it's own to_dict() method.
+
     products_data = []
     for product in products:
         products_data.append(product.to_dict())
@@ -77,6 +78,8 @@ def load_data():
     # load_data() function reads the JSON file and converts everything back into objects for Python to use.
     # Effectively the reverse of the save_data() function. Called when the program starts and loads saved data.
     # os.path module checks first and handles the case when files doesn't exist.
+    # Parameters: none
+    # Returns: three lists
 
     if os.path.exists(DATA_FILE) == False: # Return three empty lists so the program starts fresh without crashing
  
@@ -119,5 +122,7 @@ def initialize_data():
 
     # initialize_data() called in main.py when program starts. Calls load_data() and returns results.
     # If no file exists, load_data() handles that and returns empty lists.
+    # Parameters: none
+    # Returns: products, vendors, purchase_orders
 
     return load_data()
