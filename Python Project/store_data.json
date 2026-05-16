@@ -27,6 +27,45 @@
             "clearance_price": null
         },
         {
+            "product_id": "SD003",
+            "name": "Carrot Seeds",
+            "category": "Seeds",
+            "quantity": 90,
+            "reorder_level": 25,
+            "reorder_quantity": 75,
+            "price": 1.99,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "SD004",
+            "name": "Lavender Seeds",
+            "category": "Seeds",
+            "quantity": 60,
+            "reorder_level": 20,
+            "reorder_quantity": 60,
+            "price": 2.79,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": "2026-10-01",
+            "clearance_price": 0.99
+        },
+        {
+            "product_id": "SD005",
+            "name": "Basil Seeds",
+            "category": "Seeds",
+            "quantity": 110,
+            "reorder_level": 25,
+            "reorder_quantity": 75,
+            "price": 1.79,
+            "vendor_id": "V001",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
             "product_id": "PL001",
             "name": "Aloe Vera",
             "category": "Plants",
@@ -53,6 +92,58 @@
             "clearance_price": 4.99
         },
         {
+            "product_id": "PL003",
+            "name": "Jade Plant",
+            "category": "Plants",
+            "quantity": 30,
+            "reorder_level": 8,
+            "reorder_quantity": 20,
+            "price": 11.99,
+            "vendor_id": "V005",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PL004",
+            "name": "Snake Plant",
+            "category": "Plants",
+            "quantity": 25,
+            "reorder_level": 8,
+            "reorder_quantity": 20,
+            "price": 13.99,
+            "vendor_id": "V005",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PL005",
+            "name": "Peace Lily",
+            "category": "Plants",
+            "quantity": 20,
+            "reorder_level": 8,
+            "reorder_quantity": 20,
+            "price": 14.99,
+            "vendor_id": "V005",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PL006",
+            "name": "Lucky Bamboo",
+            "category": "Plants",
+            "quantity": 35,
+            "reorder_level": 10,
+            "reorder_quantity": 25,
+            "price": 12.99,
+            "vendor_id": "V005",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
             "product_id": "TL001",
             "name": "Garden Trowel",
             "category": "Tools",
@@ -73,6 +164,32 @@
             "reorder_level": 15,
             "reorder_quantity": 40,
             "price": 18.99,
+            "vendor_id": "V002",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "TL003",
+            "name": "Garden Rake",
+            "category": "Tools",
+            "quantity": 12,
+            "reorder_level": 15,
+            "reorder_quantity": 30,
+            "price": 22.99,
+            "vendor_id": "V002",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "TL004",
+            "name": "Watering Can",
+            "category": "Tools",
+            "quantity": 40,
+            "reorder_level": 10,
+            "reorder_quantity": 30,
+            "price": 15.99,
             "vendor_id": "V002",
             "active": true,
             "clearance_date": null,
@@ -105,6 +222,32 @@
             "clearance_price": null
         },
         {
+            "product_id": "SL003",
+            "name": "Perlite",
+            "category": "Soil",
+            "quantity": 40,
+            "reorder_level": 10,
+            "reorder_quantity": 30,
+            "price": 8.49,
+            "vendor_id": "V003",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "SL004",
+            "name": "Garden Soil",
+            "category": "Soil",
+            "quantity": 70,
+            "reorder_level": 20,
+            "reorder_quantity": 50,
+            "price": 7.99,
+            "vendor_id": "V003",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
             "product_id": "PP001",
             "name": "Terracotta Pot",
             "category": "Pots & Planters",
@@ -126,6 +269,58 @@
             "reorder_quantity": 40,
             "price": 9.99,
             "vendor_id": "V004",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PP003",
+            "name": "Window Box",
+            "category": "Pots & Planters",
+            "quantity": 45,
+            "reorder_level": 10,
+            "reorder_quantity": 30,
+            "price": 14.99,
+            "vendor_id": "V004",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PC001",
+            "name": "Neem Oil Spray",
+            "category": "Pest Control",
+            "quantity": 50,
+            "reorder_level": 15,
+            "reorder_quantity": 40,
+            "price": 11.99,
+            "vendor_id": "V006",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PC002",
+            "name": "Slug Pellets",
+            "category": "Pest Control",
+            "quantity": 65,
+            "reorder_level": 20,
+            "reorder_quantity": 50,
+            "price": 7.99,
+            "vendor_id": "V006",
+            "active": true,
+            "clearance_date": null,
+            "clearance_price": null
+        },
+        {
+            "product_id": "PC003",
+            "name": "Insecticidal Soap",
+            "category": "Pest Control",
+            "quantity": 40,
+            "reorder_level": 15,
+            "reorder_quantity": 35,
+            "price": 9.99,
+            "vendor_id": "V006",
             "active": true,
             "clearance_date": null,
             "clearance_price": null
@@ -163,6 +358,22 @@
             "phone": "555-606-7070",
             "email": "james@terrapots.com",
             "address": "Chicago, IL"
+        },
+        {
+            "vendor_id": "V005",
+            "name": "Bloom and Grow Nursery",
+            "contact_name": "Amy Collins",
+            "phone": "555-707-8080",
+            "email": "amy@bloomandgrow.com",
+            "address": "Nashville, TN"
+        },
+        {
+            "vendor_id": "V006",
+            "name": "GreenLeaf Pest Solutions",
+            "contact_name": "Tom Bradley",
+            "phone": "555-808-9090",
+            "email": "tom@greenleafpest.com",
+            "address": "Phoenix, AZ"
         }
     ],
     "purchase_orders": [
@@ -211,7 +422,7 @@
         {
             "po_number": "PO3",
             "vendor_id": "V003",
-            "date_created": "2026-03-01",
+            "date_created": "2026-02-01",
             "items": [
                 {
                     "product_id": "SL001",
@@ -227,12 +438,33 @@
                 }
             ],
             "total_cost": 1193.9,
-            "status": "Open"
+            "status": "Received"
         },
         {
             "po_number": "PO4",
+            "vendor_id": "V005",
+            "date_created": "2026-02-15",
+            "items": [
+                {
+                    "product_id": "PL003",
+                    "product_name": "Jade Plant",
+                    "quantity": 20,
+                    "unit_price": 11.99
+                },
+                {
+                    "product_id": "PL004",
+                    "product_name": "Snake Plant",
+                    "quantity": 15,
+                    "unit_price": 13.99
+                }
+            ],
+            "total_cost": 449.65,
+            "status": "Received"
+        },
+        {
+            "po_number": "PO5",
             "vendor_id": "V001",
-            "date_created": "2026-04-01",
+            "date_created": "2026-03-01",
             "items": [
                 {
                     "product_id": "PL001",
@@ -248,6 +480,69 @@
                 }
             ],
             "total_cost": 469.5,
+            "status": "Open"
+        },
+        {
+            "po_number": "PO6",
+            "vendor_id": "V003",
+            "date_created": "2026-03-15",
+            "items": [
+                {
+                    "product_id": "SL003",
+                    "product_name": "Perlite",
+                    "quantity": 30,
+                    "unit_price": 8.49
+                },
+                {
+                    "product_id": "SL004",
+                    "product_name": "Garden Soil",
+                    "quantity": 50,
+                    "unit_price": 7.99
+                }
+            ],
+            "total_cost": 654.2,
+            "status": "Open"
+        },
+        {
+            "po_number": "PO7",
+            "vendor_id": "V002",
+            "date_created": "2026-04-01",
+            "items": [
+                {
+                    "product_id": "TL003",
+                    "product_name": "Garden Rake",
+                    "quantity": 30,
+                    "unit_price": 22.99
+                },
+                {
+                    "product_id": "TL004",
+                    "product_name": "Watering Can",
+                    "quantity": 30,
+                    "unit_price": 15.99
+                }
+            ],
+            "total_cost": 1169.4,
+            "status": "Open"
+        },
+        {
+            "po_number": "PO8",
+            "vendor_id": "V006",
+            "date_created": "2026-04-15",
+            "items": [
+                {
+                    "product_id": "PC001",
+                    "product_name": "Neem Oil Spray",
+                    "quantity": 40,
+                    "unit_price": 11.99
+                },
+                {
+                    "product_id": "PC002",
+                    "product_name": "Slug Pellets",
+                    "quantity": 50,
+                    "unit_price": 7.99
+                }
+            ],
+            "total_cost": 879.1,
             "status": "Open"
         }
     ]

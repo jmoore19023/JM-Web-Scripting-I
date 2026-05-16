@@ -1,0 +1,46 @@
+﻿John Moore
+Inventory and Purchase Order System
+
+
+
+
+1.  How are products stored in your program?
+
+
+Products are created through the Product class and stored as Product objects inside a list while the program is running. Between sessions, these objects are transformed into different formats. When saving, each product object is converted to a dictionary using to_dict() and then written to store_data.json in a JSON format. When loading, the program reads the JSON file back into dictionaries and converts them into Product objects again using from_dict(). The dictionary acts as a medium between the data and the program since JSON cannot store Python objects.
+
+
+2. How are purchase orders connected to vendors and products?
+
+
+Purchase orders are connected to vendors through the vendor_id field and products through the product_id field. When a purchase order is placed, the vendor ID and each product ID are stored, acting as primary keys that allow the associated data to be pulled for use throughout the program. The vendor has a one to one relationship with the order where the order has a one to many relationship with products. The products on the order are stored in the items field as a list of dictionaries, where each dictionary holds the product_id, name, quantity, and unit price for that specific item on the order. 
+
+
+
+
+3.  How does receiving a shipment change inventory?
+
+
+Once a shipment is received, the program loops through every item in the purchase order and searches the products list to find the matching product by ID. When a match is found, the ordered quantity is added to the product's current stock in inventory. Once all items have been updated, the purchase order status is changed from Open to Received to close out the order. 
+
+
+
+
+4.  How does your JSON save/load process work?
+
+
+When saving, the program converts all Product, Vendor, and PurchaseOrder objects into
+dictionaries using their to_dict() methods. These dictionaries are combined into one combined dictionary with three labeled sections and written to store_data.json. When loading, the program reads store_data.json using json.load() which returns the combined dictionary. Each section is then converted back into objects using the from_dict() class method. The way objects are packed is essentially the opposite of how it is unpacked.
+
+
+
+
+
+
+
+
+5.  What is one bug you fixed and how did you fix it?
+
+
+When building the clearance items report, I ran into an issue comparing
+the clearance date to today's date. It was more complicated than I realized trying to create a comparison between two dates, especially due to how JSON stores dates as strings. This created an interesting situation where I had to think through the process of taking a string and converting it into a date data type that could be used in a comparison. I had to look into how I could reliably compare dates and found that Python's datetime module provides a date class with a today() method that returns today's date. The fix was converting the stored clearance date string into a matching date object using date.fromisoformat() so the two could be compared directly.
